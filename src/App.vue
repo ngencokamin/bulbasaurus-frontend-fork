@@ -16,10 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/products">Pokemon</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/products/new">New Product</a>
+            <a class="nav-link" href="/pokemon">Pokemon</a>
           </li>
           <li v-if="!isLoggedIn" key="" class="nav-item">
             <a class="nav-link" href="/signup">Sign Up</a>
@@ -29,9 +26,6 @@
           </li>
           <li v-if="isLoggedIn" class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/orders">Order</a>
           </li>
         </ul>
       </div>
