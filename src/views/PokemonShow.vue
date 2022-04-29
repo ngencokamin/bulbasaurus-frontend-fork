@@ -2,17 +2,11 @@
   <div class="home">
     <h1>Pokemon Info</h1>
     <h2>{{ pokemon.name }}</h2>
-    <p>{{ pokemon.id }}</p>
-    <p>{{ pokemon.pokemon_type }}</p>
-    <p>{{ pokemon.species }}</p>
+    <p>{{ pokemon.base_experience }}</p>
     <p>{{ pokemon.height }}</p>
-    <p>{{ pokemon.hp }}</p>
-    <p>{{ pokemon.attack }}</p>
-    <p>{{ pokemon.defense }}</p>
-    <p>{{ pokemon.spec_attack }}</p>
-    <p>{{ pokemon.spec_defense }}</p>
-    <p>{{ pokemon.speed }}</p>
-    <p>{{ pokemon.total }}</p>
+    <p>{{ pokemon.order }}</p>
+    <p>{{ pokemon.weight }}</p>
+    <p>{{ pokemon.body }}</p>
     <img
       v-if="pokemon && pokemon.images && pokemon.images[0]"
       v-bind:src="pokemon.images[0].url"

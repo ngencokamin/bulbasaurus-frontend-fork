@@ -88,9 +88,6 @@ pre {
   line-height: 18.5714px;
 }
 body {
-  background-image: url("https://previews.123rf.com/images/hanganuanamaria/hanganuanamaria1906/hanganuanamaria190600022/126279062-sfondo-astratto-con-colori-chiari-e-pastello-carta-da-parati-semplice-sfondo-per-la-presentazione-de.jpg");
-}
-body {
   font-family: "Zilla Slab", serif;
   font-size: 20px;
 }
