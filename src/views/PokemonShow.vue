@@ -1,20 +1,30 @@
 <template>
   <div class="home">
-    <h1>Pokemon Info</h1>
-    <h2>{{ pokemon.name }}</h2>
-    <p>{{ pokemon.base_experience }}</p>
-    <p>{{ pokemon.height }}</p>
-    <p>{{ pokemon.order }}</p>
-    <p>{{ pokemon.weight }}</p>
-    <p>{{ pokemon.body }}</p>
-    <img
-      v-if="pokemon && pokemon.images && pokemon.images[0]"
-      v-bind:src="pokemon.images[0].url"
-      v-bind:alt="pokemon.name"
-      style="max-width: 250px"
-    />
+    <router-link v-bind:to="`/pokemon/${p.id}`">
+      <img
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`"
+        class="card-img-top"
+        v-bind:alt="p.name"
+        style="max-width: 250px"
+      />
+    </router-link>
     <div></div>
     <router-link to="/pokemon">Back to all Pokemon!</router-link>
+    <div v-for="p in pokemon" v-bind:key="p.id">
+      <h2>{{ pokemon.name }}</h2>
+    </div>
+    <button v-on:click="showPokemon(pokemon)">More Info</button>
+
+    <dialog id="pokemon-details">
+      <form method="dialog">
+        <h1>Pokemon Info</h1>
+        <p>Name: {{ currentPokemon.name }}</p>
+        <p>Base Experience: {{ currentPokemon.base_experience }}</p>
+        <p>Order: {{ currentPokemon.order }}</p>
+        <p>Weight: {{ currentPokemon.weight }}</p>
+        <button>Close</button>
+      </form>
+    </dialog>
   </div>
 </template>
 
@@ -25,6 +35,7 @@ export default {
   data: function () {
     return {
       pokemon: [],
+      currentPokemon: {},
     };
   },
   created: function () {
@@ -32,8 +43,9 @@ export default {
   },
   methods: {
     showPokemon() {
-      axios.get(`/pokemon/${this.$route.params.id}`).then((response) => {
-        this.pokemon = response.data;
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${this.pokemon.id}`).then((response) => {
+        this.currentPokemon = response.data;
+        document.querySelector("#pokemon-details").showModal();
       });
     },
   },

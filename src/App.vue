@@ -1,38 +1,73 @@
 <template>
-  <nav class="navbar navbar-light" style="background-color: lightpink">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#page-top">Bulbasaurus</a>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
+        data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        Menu
+        <i class="fas fa-bars"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/pokemon">Pokemon</a>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Pokemon</a>
           </li>
-          <li v-if="!isLoggedIn" key="" class="nav-item">
-            <a class="nav-link" href="/signup">Sign Up</a>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">My Teams</a>
           </li>
-          <li v-if="!isLoggedIn" class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li v-if="isLoggedIn" class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Mobile</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+      <!-- Masthead Avatar Image-->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pokemon</h2>
+      <!-- Icon Divider-->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
+    </div>
+  </header>
   <router-view />
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+        <!-- Footer Location-->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Location</h4>
+          <p class="lead mb-0">
+            2215 John Daniel Drive
+            <br />
+            Clark, MO 65243
+          </p>
+        </div>
+
+        <!-- Footer About Text-->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">About Freelancer</h4>
+          <p class="lead mb-0">
+            Freelance is a free to use, MIT licensed Bootstrap theme created by
+            <a href="http://startbootstrap.com">Start Bootstrap</a>
+            .
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -49,49 +84,3 @@ export default {
   },
 };
 </script>
-
-<style>
-h1 {
-  font-size: 24px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 700;
-  line-height: 26.4px;
-  text-decoration: underline;
-}
-h3 {
-  font-size: 14px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 700;
-  line-height: 15.4px;
-}
-p {
-  font-size: 20px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  line-height: 20px;
-}
-blockquote {
-  font-size: 21px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  line-height: 30px;
-}
-pre {
-  font-size: 13px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  line-height: 18.5714px;
-}
-body {
-  font-family: "Zilla Slab", serif;
-  font-size: 20px;
-}
-input {
-  caret-color: deeppink;
-}
-</style>

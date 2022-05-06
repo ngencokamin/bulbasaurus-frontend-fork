@@ -1,18 +1,29 @@
 <template>
   <div class="row">
-    <h1>{{ message }}</h1>
-    <div class="col" v-for="p in pokemon" v-bind:key="p.id">
-      <div class="card" style="width: 10rem">
-        <img
-          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`"
-          class="card-img-top"
-          v-bind:alt="pokemon.name"
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ pokemon.name }}</h5>
+    <section class="page-section portfolio" id="portfolio">
+      <div class="container">
+        <!-- Portfolio Section Heading-->
+
+        <!-- Portfolio Grid Items-->
+        <div class="row justify-content-center">
+          <!-- Portfolio Item 1-->
+          <div class="col-md-6 col-lg-4 mb-5" v-for="p in pokemon" v-bind:key="p.id">
+            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white">
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img
+                v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`"
+                class="img-fluid"
+                v-bind:alt="pokemon.name"
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -22,7 +33,6 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "shit",
       pokemon: [],
     };
   },
@@ -31,7 +41,7 @@ export default {
   },
   methods: {
     indexPokemons() {
-      axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=40").then((response) => {
+      axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=51").then((response) => {
         console.log(response.data.results);
         this.pokemon = response.data.results;
         for (var i = 0; i < this.pokemon.length; i++) {
@@ -47,10 +57,9 @@ export default {
 </script>
 
 <style>
-.selected .card-body {
-  color: white;
-  background-color: rgb(200, 101, 236);
-  width: 20%;
-  height: 20%;
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
 }
 </style>
