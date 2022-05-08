@@ -17,31 +17,23 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Pokemon</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/pokemon">Pokemon</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">My Teams</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/teams">My Teams</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Mobile</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#mobile">Mobile</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#extra">Extra</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-      <!-- Masthead Avatar Image-->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pokemon</h2>
-      <!-- Icon Divider-->
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
-      </div>
-    </div>
-  </header>
+  <header class="masthead bg-primary text-white text-center"></header>
   <router-view />
   <footer class="footer text-center">
     <div class="container">

@@ -1,31 +1,23 @@
 <template>
-  <div class="home">
-    <router-link v-bind:to="`/pokemon/${p.id}`">
+  <div class="pokemon-show">
+    <div>
       <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`"
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentPokemon.id}.png`"
         class="card-img-top"
-        v-bind:alt="p.name"
+        v-bind:alt="currentPokemon.name"
         style="max-width: 250px"
       />
-    </router-link>
-    <div></div>
-    <router-link to="/pokemon">Back to all Pokemon!</router-link>
+    </div>
+
     <div v-for="p in pokemon" v-bind:key="p.id">
       <h2>{{ pokemon.name }}</h2>
     </div>
-    <button v-on:click="showPokemon(pokemon)">More Info</button>
-
-    <dialog id="pokemon-details">
-      <form method="dialog">
-        <h1>Pokemon Info</h1>
-        <p>Name: {{ currentPokemon.name }}</p>
-        <p>Base Experience: {{ currentPokemon.base_experience }}</p>
-        <p>Order: {{ currentPokemon.order }}</p>
-        <p>Weight: {{ currentPokemon.weight }}</p>
-        <button>Close</button>
-      </form>
-    </dialog>
+    <p>Name: {{ currentPokemon.name }}</p>
+    <p>Base Experience: {{ currentPokemon.base_experience }}</p>
+    <p>Order: {{ currentPokemon.order }}</p>
+    <p>Weight: {{ currentPokemon.weight }}</p>
   </div>
+  <router-link to="/pokemon">Back to all Pokemon!</router-link>
 </template>
 
 <script>
@@ -43,9 +35,9 @@ export default {
   },
   methods: {
     showPokemon() {
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${this.pokemon.id}`).then((response) => {
+      axios.get("https://pokeapi.co/api/v2/pokemon/" + this.$route.params.id).then((response) => {
         this.currentPokemon = response.data;
-        document.querySelector("#pokemon-details").showModal();
+        // document.querySelector("#pokemon-details").showModal();
       });
     },
   },

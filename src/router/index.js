@@ -26,7 +26,7 @@ const routes = [
     component: PokemonIndex,
   },
   {
-    path: "/pokemon:id",
+    path: "/pokemon/:id",
     name: "pokemon-show",
     component: PokemonShow,
   },
