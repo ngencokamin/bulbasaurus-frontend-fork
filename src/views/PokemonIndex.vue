@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     indexPokemons() {
-      axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=51").then((response) => {
+      axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=152").then((response) => {
         console.log(response.data.results);
         this.pokemon = response.data.results;
         for (var i = 0; i < this.pokemon.length; i++) {
