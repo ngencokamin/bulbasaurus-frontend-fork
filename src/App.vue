@@ -23,10 +23,19 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/teams">My Teams</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#mobile">Mobile</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/mobile">Mobile</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#extra">Extra</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/extra">Extra</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/signup">Signup</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login">Login</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/logout">Logout</a>
           </li>
         </ul>
       </div>

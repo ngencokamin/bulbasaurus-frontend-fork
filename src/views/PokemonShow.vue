@@ -9,6 +9,7 @@
       />
     </div>
     <h2>{{ currentPokemon.name }}</h2>
+    <p>{{ currentPokemon.id }}</p>
     <p>Types: {{ attribute[0] }}, {{ attribute[1] }}</p>
     <p>Under a full moon, this POKéMON likes to mimic the shadows of people and laugh at their fright.</p>
     <p>Category: Shadow Pokemon</p>
@@ -88,8 +89,6 @@ export default {
         console.log("UGHHHH", this.stats);
         console.log("AHHH!!!", this.attribute);
         console.log(this.currentPokemon);
-
-        // document.querySelector("#pokemon-details").showModal();
       });
     },
   },
