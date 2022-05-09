@@ -14,7 +14,7 @@
     <p>Category: Shadow Pokemon</p>
     <p>Height: {{ currentPokemon.height }}</p>
     <p>Weight: {{ currentPokemon.weight }}</p>
-    <p v-if="ability?.name">Abilities: {{ ability.name }}</p>
+    <p>Abilities: {{ ability[0] }}</p>
   </div>
   <div>
     <h3>Evolution Chain</h3>
@@ -44,6 +44,9 @@
     <p>Special Defense: {{ stats[4] }}</p>
     <p>Speed: {{ stats[5] }}</p>
   </div>
+  <div>
+    <h3>Move Pool</h3>
+  </div>
   <router-link to="/pokemon">Back to all Pokemon!</router-link>
 </template>
 
@@ -55,15 +58,15 @@ export default {
     return {
       pokemon: [],
       currentPokemon: {},
-      ability: {},
+      ability: [],
       attribute: [],
       stats: [],
       base_stat: [],
+      moves: [],
     };
   },
   mounted: function () {
     this.showPokemon();
-    this.abilityShow();
   },
   methods: {
     showPokemon() {
@@ -77,18 +80,16 @@ export default {
         stats.forEach((base_stat) => {
           this.stats.push(base_stat.base_stat);
         });
-
+        let ability = response.data.abilities;
+        ability.forEach((ability) => {
+          this.ability.push(ability.ability.name);
+        });
+        console.log("GEEEZZZ", this.ability);
         console.log("UGHHHH", this.stats);
         console.log("AHHH!!!", this.attribute);
         console.log(this.currentPokemon);
 
         // document.querySelector("#pokemon-details").showModal();
-      });
-    },
-    abilityShow() {
-      axios.get("https://pokeapi.co/api/v2/ability/" + this.$route.params.id).then((response) => {
-        this.ability = response.data;
-        console.log("THIS IS THE ABILITY", this.ability);
       });
     },
   },
