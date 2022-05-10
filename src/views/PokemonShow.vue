@@ -1,40 +1,40 @@
 <template>
   <div class="pokemon-show">
-    <div>
+    <div class="poke-name" style="text-align: center">
       <img
         v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.id}.png`"
         class="center"
         v-bind:alt="currentPokemon.name"
         style="max-width: 250px"
       />
+      <h2>{{ currentPokemon.name }}</h2>
     </div>
-    <h2>{{ currentPokemon.name }}</h2>
-    <p>{{ currentPokemon.id }}</p>
-    <p>Types: {{ attribute[0] }}, {{ attribute[1] }}</p>
-    <p>Under a full moon, this POKéMON likes to mimic the shadows of people and laugh at their fright.</p>
-    <p>Category: Shadow Pokemon</p>
-    <p>Height: {{ currentPokemon.height }}</p>
-    <p>Weight: {{ currentPokemon.weight }}</p>
-    <p>Abilities: {{ ability[0] }}</p>
+    <div class="poke-info" style="text-align: center">
+      <div class="types">
+        <p>{{ attribute[0] }} {{ attribute[1] }}</p>
+      </div>
+      <p>Pokedex ID: {{ currentPokemon.id }}</p>
+      <p>{{ bio }}</p>
+      <p>Category: {{ species.genus }}</p>
+      <p>Height: {{ currentPokemon.height }}</p>
+      <p>Weight: {{ currentPokemon.weight }}</p>
+      <p>Base Happiness: {{ species.base_happiness }}</p>
+      <p>Capture Rate: {{ species.capture_rate }}</p>
+      <p>Base Experience: {{ currentPokemon.base_experience }}</p>
+      <p>Abilities: {{ ability[0] }}, {{ ability[1] }}</p>
+    </div>
   </div>
   <div>
     <h3>Evolution Chain</h3>
-    <img
-      src="https://sg.portal-pokemon.com/play/resources/pokedex/img/pm/5c619391fb78cbe0d3646a9b76da07372a18580e.png"
-      id="left"
-      style="max-width: 250px"
-    />
-    <img
-      src="https://archives.bulbagarden.net/media/upload/thumb/6/62/093Haunter.png/250px-093Haunter.png"
-      id="center"
-      style="max-width: 250px"
-    />
-
-    <img
-      src="https://archives.bulbagarden.net/media/upload/thumb/c/c6/094Gengar.png/250px-094Gengar.png"
-      id="right"
-      style="max-width: 250px"
-    />
+    <div>
+      <p>{{ baby }}</p>
+    </div>
+    <div>
+      <p>{{ teen }}</p>
+    </div>
+    <div>
+      <p>{{ adult }}</p>
+    </div>
   </div>
   <div>
     <h3>Base Stats</h3>
@@ -110,10 +110,16 @@ export default {
       stats: [],
       base_stat: [],
       moves: [],
+      species: {},
+      bio: [],
+      baby: {},
+      teen: {},
+      adult: {},
     };
   },
   mounted: function () {
     this.showPokemon();
+    this.showSpecies();
   },
   methods: {
     showPokemon() {
@@ -131,10 +137,29 @@ export default {
         ability.forEach((ability) => {
           this.ability.push(ability.ability.name);
         });
-        console.log("GEEEZZZ", this.ability);
-        console.log("UGHHHH", this.stats);
-        console.log("AHHH!!!", this.attribute);
-        console.log(this.currentPokemon);
+        console.log("ABILITY", this.ability);
+        console.log("STATS", this.stats);
+        console.log("TYPES", this.attribute);
+        console.log("POKEMON", this.currentPokemon);
+      });
+    },
+    showSpecies() {
+      axios.get("https://pokeapi.co/api/v2/pokemon-species/" + this.$route.params.id).then((response) => {
+        this.species = response.data;
+        console.log("SPECIES", this.species.evolution_chain.url);
+        this.bio = response.data.flavor_text_entries[0].flavor_text;
+        this.showEvolution(this.species.evolution_chain.url);
+      });
+    },
+    showEvolution(chain) {
+      axios.get(chain).then((response) => {
+        console.log(response.data);
+        this.baby = response.data.chain?.species.name;
+        console.log(this.baby);
+        this.teen = response.data.chain?.evolves_to[0]?.species.name;
+        console.log(this.teen);
+        this.adult = response.data.chain?.evolves_to[0]?.evolves_to[0]?.species.name;
+        console.log(this.adult);
       });
     },
   },
@@ -161,12 +186,20 @@ p {
 
 .column {
   float: left;
-  width: 19%;
+  width: 22%;
   padding: 5px;
 }
 .row::after {
   content: "";
   clear: both;
   display: table;
+}
+.poke-name {
+  text-transform: uppercase;
+}
+.types {
+  text-shadow: 2px 2px #8569f5;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 </style>
