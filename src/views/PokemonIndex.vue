@@ -31,7 +31,7 @@
                   </div>
                 </div>
                 <img
-                  v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`"
+                  v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`"
                   class="img-fluid"
                   v-bind:alt="pokemon.name"
                 />

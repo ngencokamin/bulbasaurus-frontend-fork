@@ -2,7 +2,7 @@
   <div class="pokemon-show">
     <div>
       <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentPokemon.id}.png`"
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.id}.png`"
         class="center"
         v-bind:alt="currentPokemon.name"
         style="max-width: 250px"
@@ -47,6 +47,52 @@
   </div>
   <div>
     <h3>Move Pool</h3>
+    <p>Move example</p>
+    <p>Move example</p>
+    <p>Move example</p>
+  </div>
+  <div class="row">
+    <h3>Sprites</h3>
+    <div class="column" style="text-align: center">
+      <!-- front default -->
+      <img
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentPokemon.id}.png`"
+        class="center"
+        v-bind:alt="currentPokemon.name"
+        style="max-width: 250px"
+      />
+      <p>Front Default</p>
+    </div>
+    <div class="column" style="text-align: center">
+      <!-- front shiny -->
+      <img
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${currentPokemon.id}.png`"
+        class="center"
+        v-bind:alt="currentPokemon.name"
+        style="max-width: 250px"
+      />
+      <p>Front Shiny</p>
+    </div>
+    <div class="column" style="text-align: center">
+      <!-- back default -->
+      <img
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${currentPokemon.id}.png`"
+        class="center"
+        v-bind:alt="currentPokemon.name"
+        style="max-width: 250px"
+      />
+      <p>Back Default</p>
+    </div>
+    <div class="column" style="text-align: center">
+      <!-- back shiny -->
+      <img
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${currentPokemon.id}.png`"
+        class="center"
+        v-bind:alt="currentPokemon.name"
+        style="max-width: 250px"
+      />
+      <p>Back Shiny</p>
+    </div>
   </div>
   <router-link to="/pokemon">Back to all Pokemon!</router-link>
 </template>
@@ -112,12 +158,15 @@ p {
   margin-right: auto;
   width: 50%;
 }
-#center {
-}
-#left {
+
+.column {
   float: left;
+  width: 19%;
+  padding: 5px;
 }
-/* #right {
-  float: right;
-} */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 </style>
