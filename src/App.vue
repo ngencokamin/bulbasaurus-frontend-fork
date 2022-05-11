@@ -44,11 +44,11 @@
 
   <header class="masthead bg-primary text-white text-center"></header>
   <router-view />
-  <footer class="footer text-center">
-    <!-- <div class="container">
+  <!-- <footer class="footer text-center"> -->
+  <!-- <div class="container">
       <div class="row"> -->
-    <!-- Footer Location-->
-    <!-- <div class="col-lg-4 mb-5 mb-lg-0">
+  <!-- Footer Location-->
+  <!-- <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Location</h4>
           <p class="lead mb-0">
             2215 John Daniel Drive
@@ -57,8 +57,8 @@
           </p>
         </div> -->
 
-    <!-- Footer About Text-->
-    <!-- <div class="col-lg-4">
+  <!-- Footer About Text-->
+  <!-- <div class="col-lg-4">
           <h4 class="text-uppercase mb-4">About Freelancer</h4>
           <p class="lead mb-0">
             Freelance is a free to use, MIT licensed Bootstrap theme created by
@@ -68,7 +68,7 @@
         </div>
       </div>
     </div> -->
-  </footer>
+  <!-- </footer> -->
 </template>
 
 <script>

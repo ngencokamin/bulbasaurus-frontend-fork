@@ -85,16 +85,8 @@
       </div>
     </section>
   </div>
-  <!-- <div>
-    <h3>Base Stats</h3>
-    <p>HP: {{ stats[0] }}</p>
-    <p>Attack: {{ stats[1] }}</p>
-    <p>Defense: {{ stats[2] }}</p>
-    <p>Special Attack: {{ stats[3] }}</p>
-    <p>Special Defense: {{ stats[4] }}</p>
-    <p>Speed: {{ stats[5] }}</p>
-  </div> -->
   <br />
+
   <div class="row">
     <h3>Sprites</h3>
     <div class="column" style="text-align: center">
@@ -138,7 +130,9 @@
       <p>Back Shiny</p>
     </div>
   </div>
-  <router-link to="/pokemon">Back to all Pokemon!</router-link>
+  <div class="router">
+    <router-link to="/pokemon">Back to all Pokemon!</router-link>
+  </div>
 </template>
 
 <script>
@@ -259,12 +253,26 @@ p {
   clear: both;
   display: table;
 }
-h3 {
+/* h3 {
+  text-align: center;
+  text-shadow: 2px 2px #ec5e5e;
+} */
+.row {
+  text-align: center;
+  text-shadow: 2px 2px #ec5e5e;
+  resize: horizontal;
+  overflow: auto;
+}
+.chain {
   text-align: center;
   text-shadow: 2px 2px #ec5e5e;
 }
 .base {
+  text-align: left;
   text-shadow: 2px 2px #ec5e5e;
+}
+.router {
+  text-align: center;
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
