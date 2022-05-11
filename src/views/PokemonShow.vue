@@ -15,7 +15,7 @@
       </div>
       <p>Pokedex ID: {{ currentPokemon.id }}</p>
       <p>{{ bio }}</p>
-      <p>Category: {{ species.genus }}</p>
+      <p>Category: {{ category }}</p>
       <p>Height: {{ currentPokemon.height }}</p>
       <p>Weight: {{ currentPokemon.weight }}</p>
       <p>Base Happiness: {{ species.base_happiness }}</p>
@@ -24,19 +24,68 @@
       <p>Abilities: {{ ability[0] }}, {{ ability[1] }}</p>
     </div>
   </div>
-  <div>
+  <div class="chain">
     <h3>Evolution Chain</h3>
-    <div>
+    <div class="evolution" style="text-align: center">
+      <img
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png`"
+        class="center"
+        v-bind:alt="currentPokemon.name"
+        style="max-width: 250px"
+      />
       <p>{{ baby }}</p>
     </div>
-    <div>
+    <div class="evolution" style="text-align: center">
+      <img
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png`"
+        class="center"
+        v-bind:alt="currentPokemon.name"
+        style="max-width: 250px"
+      />
       <p>{{ teen }}</p>
     </div>
-    <div>
+    <div class="evolution" style="text-align: center">
+      <img
+        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png`"
+        class="center"
+        v-bind:alt="currentPokemon.name"
+        style="max-width: 250px"
+      />
       <p>{{ adult }}</p>
     </div>
   </div>
   <div>
+    <div class="base">
+      <h3>Base Stats</h3>
+    </div>
+    <section class="bar-graph bar-graph-horizontal bar-graph-one">
+      <div class="bar-one">
+        <span class="year">HP</span>
+        <div class="bar" data="60"></div>
+      </div>
+      <div class="bar-two">
+        <span class="year">Attack</span>
+        <div class="bar" data="65">{</div>
+      </div>
+      <div class="bar-three">
+        <span class="year">Defense</span>
+        <div class="bar" data="60"></div>
+      </div>
+      <div class="bar-four">
+        <span class="year">Special Attack</span>
+        <div class="bar" data="130"></div>
+      </div>
+      <div class="bar-five">
+        <span class="year">Special Defense</span>
+        <div class="bar" data="75"></div>
+      </div>
+      <div class="bar-six">
+        <span class="year">Speed</span>
+        <div class="bar" data="110"></div>
+      </div>
+    </section>
+  </div>
+  <!-- <div>
     <h3>Base Stats</h3>
     <p>HP: {{ stats[0] }}</p>
     <p>Attack: {{ stats[1] }}</p>
@@ -44,13 +93,8 @@
     <p>Special Attack: {{ stats[3] }}</p>
     <p>Special Defense: {{ stats[4] }}</p>
     <p>Speed: {{ stats[5] }}</p>
-  </div>
-  <div>
-    <h3>Move Pool</h3>
-    <p>Move example</p>
-    <p>Move example</p>
-    <p>Move example</p>
-  </div>
+  </div> -->
+  <br />
   <div class="row">
     <h3>Sprites</h3>
     <div class="column" style="text-align: center">
@@ -115,6 +159,7 @@ export default {
       baby: {},
       teen: {},
       adult: {},
+      category: {},
     };
   },
   mounted: function () {
@@ -147,7 +192,9 @@ export default {
       axios.get("https://pokeapi.co/api/v2/pokemon-species/" + this.$route.params.id).then((response) => {
         this.species = response.data;
         console.log("SPECIES", this.species.evolution_chain.url);
+        console.log("CATEGORY", this.species.genera[7]);
         this.bio = response.data.flavor_text_entries[0].flavor_text;
+        this.category = response.data.genera[7].genus;
         this.showEvolution(this.species.evolution_chain.url);
       });
     },
@@ -186,8 +233,8 @@ p {
 
 .column {
   float: left;
-  width: 22%;
-  padding: 5px;
+  width: 25%;
+  padding: 1px;
 }
 .row::after {
   content: "";
@@ -201,5 +248,172 @@ p {
   text-shadow: 2px 2px #8569f5;
   text-transform: uppercase;
   font-weight: bold;
+}
+.evolution {
+  float: left;
+  width: 30%;
+  padding: 2px;
+}
+.chain::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+h3 {
+  text-align: center;
+  text-shadow: 2px 2px #ec5e5e;
+}
+.base {
+  text-shadow: 2px 2px #ec5e5e;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Bar Graph Horizontal */
+.bar-graph .year {
+  -webkit-animation: fade-in-text 2.2s 0.1s forwards;
+  -moz-animation: fade-in-text 2.2s 0.1s forwards;
+  animation: fade-in-text 2.2s 0.1s forwards;
+  opacity: 0;
+}
+
+.bar-graph-horizontal {
+  max-width: 380px;
+}
+
+.bar-graph-horizontal > div {
+  float: left;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.bar-graph-horizontal .year {
+  float: left;
+  margin-top: 18px;
+  width: 60px;
+}
+
+.bar-graph-horizontal .bar {
+  border-radius: 3px;
+  height: 55px;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  width: 0;
+}
+
+.bar-graph-one .bar::after {
+  -webkit-animation: fade-in-text 2.2s 0.1s forwards;
+  -moz-animation: fade-in-text 2.2s 0.1s forwards;
+  animation: fade-in-text 2.2s 0.1s forwards;
+  color: #fff;
+  content: attr(data);
+  font-weight: 700;
+  position: absolute;
+  right: 15px;
+  top: 17px;
+}
+
+.bar-graph-one .bar-one .bar {
+  background-color: #9d75fa;
+  -webkit-animation: show-bar-one 1.2s 0.1s forwards;
+  -moz-animation: show-bar-one 1.2s 0.1s forwards;
+  animation: show-bar-one 1.2s 0.1s forwards;
+}
+
+.bar-graph-one .bar-two .bar {
+  background-color: #7d52df;
+  -webkit-animation: show-bar-two 1.2s 0.2s forwards;
+  -moz-animation: show-bar-two 1.2s 0.2s forwards;
+  animation: show-bar-two 1.2s 0.2s forwards;
+}
+
+.bar-graph-one .bar-three .bar {
+  background-color: #6538cf;
+  -webkit-animation: show-bar-three 1.2s 0.3s forwards;
+  -moz-animation: show-bar-three 1.2s 0.3s forwards;
+  animation: show-bar-three 1.2s 0.3s forwards;
+}
+
+.bar-graph-one .bar-four .bar {
+  background-color: #5626c5;
+  -webkit-animation: show-bar-four 1.2s 0.4s forwards;
+  -moz-animation: show-bar-four 1.2s 0.4s forwards;
+  animation: show-bar-four 1.2s 0.4s forwards;
+}
+.bar-graph-one .bar-five .bar {
+  background-color: #461fa2;
+  -webkit-animation: show-bar-five 1.2s 0.5s forwards;
+  -moz-animation: show-bar-five 1.2s 0.5s forwards;
+  animation: show-bar-five 1.2s 0.5s forwards;
+}
+.bar-graph-one .bar-six .bar {
+  background-color: #2c0a7c;
+  -webkit-animation: show-bar-six 1.2s 0.6s forwards;
+  -moz-animation: show-bar-six 1.2s 0.6s forwards;
+  animation: show-bar-six 1.2s 0.6s forwards;
+}
+/* Bar Graph Horizontal Animations */
+@-webkit-keyframes show-bar-one {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 40%;
+  }
+}
+
+@-webkit-keyframes show-bar-two {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 45%;
+  }
+}
+
+@-webkit-keyframes show-bar-three {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 40%;
+  }
+}
+
+@-webkit-keyframes show-bar-four {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 75%;
+  }
+}
+@-webkit-keyframes show-bar-five {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 55%;
+  }
+}
+@-webkit-keyframes show-bar-six {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 70%;
+  }
+}
+
+@-webkit-keyframes fade-in-text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

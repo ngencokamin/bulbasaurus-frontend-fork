@@ -11,18 +11,11 @@
             v-model="searchText"
           />
         </div>
-        <!-- <div
-          class="col"
-          v-bind:class="{ selected: pokemon === currentPokemon }"
-          v-for="pokemon in filterPokemon()"
-          v-bind:key="pokemon.id"
-          v-on:click="currentPokemon = pokemon"
-        ></div> -->
 
         <!-- Portfolio Grid Items-->
         <div class="row justify-content-center">
           <!-- Portfolio Item 1-->
-          <div class="col-md-6 col-lg-4 mb-5" v-for="p in pokemon" v-bind:key="p.id">
+          <div class="col-md-6 col-lg-4 mb-5" v-for="p in filterPokemon()" v-bind:key="p.id">
             <router-link :to="`/pokemon/` + p.id">
               <div class="portfolio-item mx-auto" :href="`/pokemon/` + p.id">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -73,8 +66,9 @@ export default {
       });
     },
     filterPokemon() {
-      return this.pokemon.filter((pokemon) => {
-        var lowercaseTitle = pokemon.title.toLowerCase();
+      return this.pokemon.filter((p) => {
+        var lowercaseTitle = p.name.toLowerCase();
+        console.log(lowercaseTitle);
         var lowercaseSearchText = this.searchText.toLowerCase();
         return lowercaseTitle.includes(lowercaseSearchText);
       });
