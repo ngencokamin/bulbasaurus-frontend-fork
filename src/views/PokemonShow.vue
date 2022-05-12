@@ -24,9 +24,9 @@
       <p>Abilities: {{ ability[0] }}, {{ ability[1] }}</p>
     </div>
   </div>
-  <div class="chain">
+  <div class="chain row">
     <h3>Evolution Chain</h3>
-    <div class="evolution" style="text-align: center">
+    <div class="evolution col" style="text-align: center">
       <img
         v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png`"
         class="center"
@@ -35,7 +35,7 @@
       />
       <p>{{ baby }}</p>
     </div>
-    <div class="evolution" style="text-align: center">
+    <div class="evolution col" style="text-align: center">
       <img
         v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png`"
         class="center"
@@ -44,7 +44,7 @@
       />
       <p>{{ teen }}</p>
     </div>
-    <div class="evolution" style="text-align: center">
+    <div class="evolution col" style="text-align: center">
       <img
         v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png`"
         class="center"
@@ -54,38 +54,53 @@
       <p>{{ adult }}</p>
     </div>
   </div>
-  <div>
-    <div class="base">
-      <h3>Base Stats</h3>
+  <div class="row">
+    <div class="col">
+      <div class="base">
+        <h3>Base Stats</h3>
+      </div>
+
+      <div class="graph">
+        <section class="bar-graph bar-graph-horizontal bar-graph-one">
+          <div class="bar-one">
+            <span class="year">HP</span>
+            <div class="bar" data="60"></div>
+          </div>
+          <div class="bar-two">
+            <span class="year">Attack</span>
+            <div class="bar" data="65"></div>
+          </div>
+          <div class="bar-three">
+            <span class="year">Defense</span>
+            <div class="bar" data="60"></div>
+          </div>
+          <div class="bar-four">
+            <span class="year">Special Attack</span>
+            <div class="bar" data="130"></div>
+          </div>
+          <div class="bar-five">
+            <span class="year">Special Defense</span>
+            <div class="bar" data="75"></div>
+          </div>
+          <div class="bar-six">
+            <span class="year">Speed</span>
+            <div class="bar" data="110"></div>
+          </div>
+        </section>
+      </div>
     </div>
-    <section class="bar-graph bar-graph-horizontal bar-graph-one">
-      <div class="bar-one">
-        <span class="year">HP</span>
-        <div class="bar" data="60"></div>
+    <div class="col">
+      <div class="base" style="text-align: center">
+        <h3>Move Pool</h3>
+        <img src="/../assets/img/portfolio/moveset.png" />
       </div>
-      <div class="bar-two">
-        <span class="year">Attack</span>
-        <div class="bar" data="65">{</div>
-      </div>
-      <div class="bar-three">
-        <span class="year">Defense</span>
-        <div class="bar" data="60"></div>
-      </div>
-      <div class="bar-four">
-        <span class="year">Special Attack</span>
-        <div class="bar" data="130"></div>
-      </div>
-      <div class="bar-five">
-        <span class="year">Special Defense</span>
-        <div class="bar" data="75"></div>
-      </div>
-      <div class="bar-six">
-        <span class="year">Speed</span>
-        <div class="bar" data="110"></div>
-      </div>
-    </section>
+    </div>
+    <div class="col">
+      <h3>Weakness and Resistance</h3>
+      <div class="weakness"></div>
+      <img src="/../assets/img/portfolio/weakness.png" />
+    </div>
   </div>
-  <br />
 
   <div class="row">
     <h3>Sprites</h3>
@@ -218,6 +233,7 @@ h2 {
 p {
   color: rgb(0, 0, 0);
 }
+
 .center {
   display: block;
   margin-left: auto;
@@ -226,7 +242,7 @@ p {
 }
 
 .column {
-  float: left;
+  /* float: left; */
   width: 25%;
   padding: 1px;
 }
@@ -244,9 +260,10 @@ p {
   font-weight: bold;
 }
 .evolution {
-  float: left;
+  /* float: left; */
   width: 30%;
   padding: 2px;
+  margin: auto;
 }
 .chain::after {
   content: "";
@@ -263,6 +280,9 @@ p {
   resize: horizontal;
   overflow: auto;
 }
+.graph {
+  text-shadow: 1px 1px #140a5a;
+}
 .chain {
   text-align: center;
   text-shadow: 2px 2px #ec5e5e;
@@ -270,6 +290,11 @@ p {
 .base {
   text-align: left;
   text-shadow: 2px 2px #ec5e5e;
+  padding: 20px 20px;
+}
+img {
+  max-width: 100%;
+  height: auto;
 }
 .router {
   text-align: center;
@@ -307,7 +332,6 @@ body {
   border-radius: 3px;
   height: 55px;
   float: left;
-  overflow: hidden;
   position: relative;
   width: 0;
 }
