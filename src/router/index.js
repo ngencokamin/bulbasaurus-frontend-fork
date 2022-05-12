@@ -4,6 +4,7 @@ import PokemonShow from "../views/PokemonShow.vue";
 import LoginView from "../views/LoginView.vue";
 import LogoutView from "../views/LogoutView.vue";
 import SignupView from "../views/SignupView.vue";
+import ExtraView from "../views/ExtraView.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/logout",
     name: "logout",
     component: LogoutView,
+  },
+  {
+    path: "/extra",
+    name: "extra",
+    component: ExtraView,
   },
 ];
 
