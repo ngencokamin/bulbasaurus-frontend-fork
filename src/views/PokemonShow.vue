@@ -92,7 +92,58 @@
     <div class="col">
       <div class="base" style="text-align: center">
         <h3>Move Pool</h3>
-        <img src="/../assets/img/portfolio/moveset.png" />
+        <div class="move-pool">
+          <table class="table table-bordered table-striped mb-0">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">PP</th>
+                <th scope="col">Power</th>
+                <th scope="col">Accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>{{}}</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <div class="col">
@@ -162,13 +213,13 @@ export default {
       attribute: [],
       stats: [],
       base_stat: [],
-      moves: [],
       species: {},
       bio: [],
       baby: {},
       teen: {},
       adult: {},
       category: {},
+      moves: {},
     };
   },
   mounted: function () {
@@ -191,6 +242,10 @@ export default {
         ability.forEach((ability) => {
           this.ability.push(ability.ability.name);
         });
+        let moves = response.data.moves;
+        moves.forEach((move) => {
+          this.ability.push(move.move.name);
+        });
         console.log("ABILITY", this.ability);
         console.log("STATS", this.stats);
         console.log("TYPES", this.attribute);
@@ -211,11 +266,8 @@ export default {
       axios.get(chain).then((response) => {
         console.log(response.data);
         this.baby = response.data.chain?.species.name;
-        console.log(this.baby);
         this.teen = response.data.chain?.evolves_to[0]?.species.name;
-        console.log(this.teen);
         this.adult = response.data.chain?.evolves_to[0]?.evolves_to[0]?.species.name;
-        console.log(this.adult);
       });
     },
   },
@@ -233,7 +285,9 @@ h2 {
 p {
   color: rgb(0, 0, 0);
 }
-
+.move-pool {
+  color: #140a5a;
+}
 .center {
   display: block;
   margin-left: auto;
@@ -276,7 +330,6 @@ p {
 } */
 .row {
   text-align: center;
-  text-shadow: 2px 2px #ec5e5e;
   resize: horizontal;
   overflow: auto;
 }
@@ -285,11 +338,9 @@ p {
 }
 .chain {
   text-align: center;
-  text-shadow: 2px 2px #ec5e5e;
 }
 .base {
   text-align: left;
-  text-shadow: 2px 2px #ec5e5e;
   padding: 20px 20px;
 }
 img {
