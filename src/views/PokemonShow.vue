@@ -21,36 +21,42 @@
       <p>Base Happiness: {{ species.base_happiness }}</p>
       <p>Capture Rate: {{ species.capture_rate }}</p>
       <p>Base Experience: {{ currentPokemon.base_experience }}</p>
-      <p>Abilities: {{ ability[0] }}, {{ ability[1] }}</p>
+      <p>Abilities: {{ ability[0] }}</p>
     </div>
   </div>
   <div class="chain row">
     <h3>Evolution Chain</h3>
     <div class="evolution col" style="text-align: center">
-      <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png`"
-        class="center"
-        v-bind:alt="currentPokemon.name"
-        style="max-width: 250px"
-      />
+      <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
+        <img
+          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png`"
+          class="center"
+          v-bind:alt="currentPokemon.name"
+          style="max-width: 250px"
+        />
+      </router-link>
       <p>{{ baby }}</p>
     </div>
     <div class="evolution col" style="text-align: center">
-      <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png`"
-        class="center"
-        v-bind:alt="currentPokemon.name"
-        style="max-width: 250px"
-      />
+      <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
+        <img
+          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png`"
+          class="center"
+          v-bind:alt="currentPokemon.name"
+          style="max-width: 250px"
+        />
+      </router-link>
       <p>{{ teen }}</p>
     </div>
     <div class="evolution col" style="text-align: center">
-      <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png`"
-        class="center"
-        v-bind:alt="currentPokemon.name"
-        style="max-width: 250px"
-      />
+      <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
+        <img
+          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png`"
+          class="center"
+          v-bind:alt="currentPokemon.name"
+          style="max-width: 250px"
+        />
+      </router-link>
       <p>{{ adult }}</p>
     </div>
   </div>
@@ -91,55 +97,60 @@
     </div>
     <div class="col">
       <div class="base" style="text-align: center">
-        <h3>Move Pool</h3>
-        <div class="move-pool">
+        <h3>Moves</h3>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
           <table class="table table-bordered table-striped mb-0">
-            <thead>
+            <thead class="color">
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">PP</th>
-                <th scope="col">Power</th>
-                <th scope="col">Accuracy</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>PP</th>
+                <th>Power</th>
+                <th>Accuracy</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>{{}}</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{{ ability[31] }}</td>
+                <td>Physical</td>
+                <td>30</td>
+                <td>30</td>
+                <td>100%</td>
               </tr>
               <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>{{ ability[67] }}</td>
+                <td>Special</td>
+                <td>15</td>
+                <td>80</td>
+                <td>100%</td>
               </tr>
               <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td>{{ ability[52] }}</td>
+                <td>Special</td>
+                <td>10</td>
+                <td>75</td>
+                <td>100%</td>
               </tr>
               <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{{ ability[83] }}</td>
+                <td>Physical</td>
+                <td>20</td>
+                <td>60</td>
+                <td>-</td>
               </tr>
               <tr>
-                <th scope="row">5</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>{{ ability[34] }}</td>
+                <td>Special</td>
+                <td>15</td>
+                <td>100</td>
+                <td>100%</td>
               </tr>
               <tr>
-                <th scope="row">6</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td>{{ ability[47] }}</td>
+                <td>Special</td>
+                <td>10</td>
+                <td>90</td>
+                <td>100%</td>
               </tr>
             </tbody>
           </table>
@@ -246,6 +257,7 @@ export default {
         moves.forEach((move) => {
           this.ability.push(move.move.name);
         });
+
         console.log("ABILITY", this.ability);
         console.log("STATS", this.stats);
         console.log("TYPES", this.attribute);
@@ -285,9 +297,7 @@ h2 {
 p {
   color: rgb(0, 0, 0);
 }
-.move-pool {
-  color: #140a5a;
-}
+
 .center {
   display: block;
   margin-left: auto;
@@ -324,10 +334,10 @@ p {
   clear: both;
   display: table;
 }
-/* h3 {
+h3 {
   text-align: center;
   text-shadow: 2px 2px #ec5e5e;
-} */
+}
 .row {
   text-align: center;
   resize: horizontal;
@@ -499,4 +509,16 @@ body {
     opacity: 1;
   }
 }
+.color {
+  background-color: black;
+  color: white;
+}
+/* .my-custom-scrollbar {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+} */
 </style>
