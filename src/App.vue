@@ -91,4 +91,16 @@ export default {
   padding: 0;
   margin: 0;
 }
+body {
+  background: url("https://i.pinimg.com/originals/ea/f5/e3/eaf5e3a15e19ffb8459ad1a2b8e471a2.jpg") no-repeat center
+    center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.masthead {
+  background: url("https://res.cloudinary.com/dt6bbng8y/image/upload/v1652587826/cute_ubsbkx.jpg");
+  background-size: cover;
+}
 </style>

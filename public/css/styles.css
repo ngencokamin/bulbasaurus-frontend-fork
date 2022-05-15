@@ -11429,14 +11429,12 @@ html {
   font-size: 1.5rem;
   color: #6c757d;
 }
-.masthead {
+/* .masthead {
   padding-top: calc(6rem + 74px);
   padding-bottom: 6rem;
-  background: url("https://st2.depositphotos.com/3213441/12022/v/600/depositphotos_120226496-stock-illustration-pokemon-go-pokeball-seamless-texture.jpg");
-x
-  width: 100%;
- 
-}
+  background: url("https://res.cloudinary.com/dt6bbng8y/image/upload/v1652587081/cute_trga1e.jpg");
+  background-size:cover;
+} */
 .masthead .masthead-heading {
   font-size: 2.75rem;
   line-height: 2.75rem;
