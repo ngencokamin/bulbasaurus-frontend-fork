@@ -3,16 +3,14 @@ $red: #f15324;
 $white: white;
 $black: #333;
 
-body {
-  background: $bg;
-  font-family: Courier !important;
-  font-weight: 700;
-  color: $black;
-}
+
 
 .options {
-  margin: 80px auto;
-  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  
+  
   .option {
     display: flex;
     flex-direction: row;
@@ -23,7 +21,7 @@ body {
     opacity: 1;
     transition: opacity 250ms ease-in-out;
     div {
-      margin-right: 30px;
+      margin: auto;
     }
     &.faded {
       opacity: 0.8;
@@ -43,7 +41,7 @@ body {
   .base {
     background: $black;
     height: 80%;
-    width: 80%;
+    width: 100%;
     padding: 10%;
   }
 

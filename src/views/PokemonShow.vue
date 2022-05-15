@@ -236,6 +236,7 @@
 
 <script>
 import axios from "axios";
+import "../../public/css/styles.scss";
 
 export default {
   data: function () {
@@ -635,72 +636,4 @@ body {
   top: -13px;
   left: 10px;
 }
-/* *,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#toggle {
-  position: relative;
-  width: 20vmin;
-  height: 10vmin;
-  background: #1e3163;
-  border-radius: 20vmin;
-  cursor: pointer;
-  margin: auto;
-}
-
-#toggle.active {
-  background: #fd6f96;
-}
-
-#toggle .switch {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 10vmin;
-  height: 10vmin;
-  background: #ff0000;
-  border: 0.5vmin solid #000;
-  border-radius: 50%;
-  transform: scale(0.9);
-  transition: 0.8s;
-}
-
-.switch::before {
-  content: "";
-  position: absolute;
-  bottom: -0.3vmin;
-  left: -0.3vmin;
-  background: #fff;
-  width: 9.6vmin;
-  height: 5vmin;
-  border: 0.5vmin solid #000;
-  border-bottom-left-radius: 30vmin;
-  border-bottom-right-radius: 30vmin;
-  box-shadow: inset 1vmin -1vmin 1vmin #7f7c82;
-}
-
-.switch::after {
-  content: "";
-  position: absolute;
-  top: 3.4vmin;
-  left: 3.4vmin;
-  width: 2.5vmin;
-  height: 2.5vmin;
-  background: #fff;
-  border: 0.5vmin solid #000;
-  border-radius: 50%;
-  /* box-shadow: -4vmin -4vmin 0 -1vmin rgb(98, 63, 63); */
-/* }
-
-#toggle.active .switch {
-  left: 10vmin;
-  background: #ff0000;
-  transform: scale(0.9) rotate(180deg);
-  transition: 0.8s;
-} */
 </style>
