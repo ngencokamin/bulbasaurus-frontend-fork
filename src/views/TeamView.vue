@@ -30,10 +30,13 @@ export default {
   },
   methods: {
     myTeam() {
-      axios.get("https://pokeapi.co/api/v2/pokemon/" + ).then((response) => {
+      axios.get("/team").then((response) => {
         this.currentPokemon = response.data;
         console.log(this.currentPokemon);
       });
+    },
+    pokemonTeam() {
+      axios.post("/poketeam").then((response) => {});
     },
   },
 };

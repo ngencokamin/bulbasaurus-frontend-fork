@@ -96,6 +96,11 @@
       </div>
     </div>
   </div>
+  <div class="mobile">
+    <h1>Mobile Stats</h1>
+    <h4>Text +1(345-876-4567) your favorite Pokemon and receive their base stats straight to your device!</h4>
+    <img src="https://i.pinimg.com/originals/00/ff/ea/00ffea6f4c8f8c6348703c6002ac9042.gif" />
+  </div>
 </template>
 
 <script>
@@ -251,7 +256,12 @@ export default {
   margin: 0;
   padding: 0;
 }
-
+/* .pokedex {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+} */
 body {
   display: flex;
   font-family: sans-serif;
@@ -264,6 +274,8 @@ body {
   height: 600px;
   margin: 50px;
   width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .left-container,
@@ -736,5 +748,11 @@ body {
 
 .fairy {
   background: #f9aeff;
+}
+.mobile {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 </style>

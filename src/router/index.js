@@ -24,7 +24,7 @@ const routes = [
     component: SignupView,
   },
   {
-    path: "/",
+    path: "/login",
     name: "login",
     component: LoginView,
   },
@@ -34,8 +34,8 @@ const routes = [
     component: LogoutView,
   },
   {
-    path: "/pokedex",
-    name: "pokedex",
+    path: "/extra",
+    name: "extra",
     component: PokedexView,
   },
   {

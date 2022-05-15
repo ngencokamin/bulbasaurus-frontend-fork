@@ -7,7 +7,7 @@
         v-bind:alt="currentPokemon.name"
         style="max-width: 250px"
       />
-      <h2>{{ currentPokemon.name }}</h2>
+      <h1>{{ currentPokemon.name }}</h1>
     </div>
     <div class="poke-info" style="text-align: center">
       <div class="types">
@@ -29,7 +29,7 @@
     <div class="evolution col" style="text-align: center">
       <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
         <img
-          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png`"
+          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.babyId}.png`"
           class="center"
           v-bind:alt="currentPokemon.name"
           style="max-width: 250px"
@@ -37,10 +37,10 @@
       </router-link>
       <p>{{ baby }}</p>
     </div>
-    <div class="evolution col" style="text-align: center">
+    <div v-if="this.teenId" class="evolution col" style="text-align: center">
       <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
         <img
-          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png`"
+          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.teenId}.png`"
           class="center"
           v-bind:alt="currentPokemon.name"
           style="max-width: 250px"
@@ -48,10 +48,10 @@
       </router-link>
       <p>{{ teen }}</p>
     </div>
-    <div class="evolution col" style="text-align: center">
+    <div v-if="this.adultId" class="evolution col" style="text-align: center">
       <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
         <img
-          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png`"
+          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.adultId}.png`"
           class="center"
           v-bind:alt="currentPokemon.name"
           style="max-width: 250px"
@@ -231,6 +231,9 @@ export default {
       adult: {},
       category: {},
       moves: {},
+      babyId: {},
+      teenId: {},
+      adultId: {},
     };
   },
   mounted: function () {
@@ -278,8 +281,23 @@ export default {
       axios.get(chain).then((response) => {
         console.log(response.data);
         this.baby = response.data.chain?.species.name;
+        this.babyId = response.data.chain?.species.url;
+        this.babyId = this.babyId.substring(this.babyId.length - 3, this.babyId.length - 1);
+        this.babyId = this.babyId.replace("/", "");
+        console.log("DEBUG", this.babyId);
+        console.log("babe", this.teen);
         this.teen = response.data.chain?.evolves_to[0]?.species.name;
+        this.teenId = response.data.chain?.evolves_to[0]?.species.url;
+        this.teenId = this.teenId.substring(this.teenId.length - 3, this.teenId.length - 1);
+        this.teenId = this.teenId.replace("/", "");
+
+        console.log("DEBUG2", this.teenId);
         this.adult = response.data.chain?.evolves_to[0]?.evolves_to[0]?.species.name;
+        this.adultId = response.data.chain?.evolves_to[0]?.evolves_to[0]?.species.url;
+        this.adultId = this.adultId.substring(this.adultId.length - 3, this.adultId.length - 1);
+        this.adultId = this.adultId.replace("/", "");
+
+        console.log("DEBUG3", this.adultId);
       });
     },
   },
@@ -290,6 +308,7 @@ export default {
 h1 {
   color: rgb(61, 1, 101);
   text-shadow: 2px 2px #00eeff;
+  font-family: "Pokemon Solid";
 }
 h2 {
   color: rgb(0, 0, 0);
