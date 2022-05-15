@@ -8,216 +8,229 @@
         style="max-width: 250px"
       />
       <h1>{{ currentPokemon.name }}</h1>
+      <!-- <div id="toggle">
+        <div class="switch"></div>
+      </div> -->
+      <div class="options">
+        <div class="option faded" id="option1">
+          <div class="pokeball unselected">
+            <div class="upper-half"></div>
+            <div class="lower-half"></div>
+            <div class="base"></div>
+            <div class="inner-circle"></div>
+            <div class="indicator visible"></div>
+            <div class="indicator-inner"></div>
+          </div>
+        </div>
 
-      <!-- <button v-on:click="addTeam(currentPokemon.id)">HERE</button> -->
-    </div>
-
-    <div class="poke-info" style="text-align: center">
-      <div class="types">
-        <p>{{ attribute[0] }} {{ attribute[1] }}</p>
-      </div>
-      <p>Pokedex ID: {{ currentPokemon.id }}</p>
-      <p>{{ bio }}</p>
-      <p>Category: {{ category }}</p>
-      <p>Height: {{ currentPokemon.height }}</p>
-      <p>Weight: {{ currentPokemon.weight }}</p>
-      <p>Base Happiness: {{ species.base_happiness }}</p>
-      <p>Capture Rate: {{ species.capture_rate }}</p>
-      <p>Base Experience: {{ currentPokemon.base_experience }}</p>
-      <p>Abilities: {{ ability[0] }}</p>
-    </div>
-  </div>
-  <div class="chain row">
-    <h3>Evolution Chain</h3>
-    <div class="evolution col" style="text-align: center">
-      <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
-        <img
-          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.babyId}.png`"
-          class="center"
-          v-bind:alt="currentPokemon.name"
-          style="max-width: 250px"
-        />
-      </router-link>
-      <p>{{ baby }}</p>
-    </div>
-    <div class="arrowed">
-      <div class="arrow-6"></div>
-    </div>
-    <div v-if="this.teenId" class="evolution col" style="text-align: center">
-      <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
-        <img
-          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.teenId}.png`"
-          class="center"
-          v-bind:alt="currentPokemon.name"
-          style="max-width: 250px"
-        />
-      </router-link>
-      <p>{{ teen }}</p>
-    </div>
-    <div class="arrowed">
-      <div class="arrow-6"></div>
-    </div>
-    <div v-if="this.adultId" class="evolution col" style="text-align: center">
-      <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
-        <img
-          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.adultId}.png`"
-          class="center"
-          v-bind:alt="currentPokemon.name"
-          style="max-width: 250px"
-        />
-      </router-link>
-      <p>{{ adult }}</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div class="base">
-        <h3>Base Stats</h3>
-      </div>
-
-      <div class="graph">
-        <section class="bar-graph bar-graph-horizontal bar-graph-one">
-          <div class="bar-one">
-            <span class="year">HP</span>
-            <div class="bar" data="60"></div>
+        <div class="poke-info" style="text-align: center">
+          <div class="types">
+            <p>{{ attribute[0] }} {{ attribute[1] }}</p>
           </div>
-          <div class="bar-two">
-            <span class="year">Attack</span>
-            <div class="bar" data="65"></div>
-          </div>
-          <div class="bar-three">
-            <span class="year">Defense</span>
-            <div class="bar" data="60"></div>
-          </div>
-          <div class="bar-four">
-            <span class="year">Special Attack</span>
-            <div class="bar" data="130"></div>
-          </div>
-          <div class="bar-five">
-            <span class="year">Special Defense</span>
-            <div class="bar" data="75"></div>
-          </div>
-          <div class="bar-six">
-            <span class="year">Speed</span>
-            <div class="bar" data="110"></div>
-          </div>
-        </section>
-      </div>
-    </div>
-    <div class="col">
-      <div class="base" style="text-align: center">
-        <h3>Moves</h3>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-          <table class="table table-bordered table-striped mb-0">
-            <thead class="color">
-              <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>PP</th>
-                <th>Power</th>
-                <th>Accuracy</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ ability[31] }}</td>
-                <td>Physical</td>
-                <td>30</td>
-                <td>30</td>
-                <td>100%</td>
-              </tr>
-              <tr>
-                <td>{{ ability[67] }}</td>
-                <td>Special</td>
-                <td>15</td>
-                <td>80</td>
-                <td>100%</td>
-              </tr>
-              <tr>
-                <td>{{ ability[52] }}</td>
-                <td>Special</td>
-                <td>10</td>
-                <td>75</td>
-                <td>100%</td>
-              </tr>
-              <tr>
-                <td>{{ ability[83] }}</td>
-                <td>Physical</td>
-                <td>20</td>
-                <td>60</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>{{ ability[34] }}</td>
-                <td>Special</td>
-                <td>15</td>
-                <td>100</td>
-                <td>100%</td>
-              </tr>
-              <tr>
-                <td>{{ ability[47] }}</td>
-                <td>Special</td>
-                <td>10</td>
-                <td>90</td>
-                <td>100%</td>
-              </tr>
-            </tbody>
-          </table>
+          <p>Pokedex ID: {{ currentPokemon.id }}</p>
+          <p>{{ bio }}</p>
+          <p>Category: {{ category }}</p>
+          <p>Height: {{ currentPokemon.height }}</p>
+          <p>Weight: {{ currentPokemon.weight }}</p>
+          <p>Base Happiness: {{ species.base_happiness }}</p>
+          <p>Capture Rate: {{ species.capture_rate }}</p>
+          <p>Base Experience: {{ currentPokemon.base_experience }}</p>
+          <p>Abilities: {{ ability[0] }}</p>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <h3>Weakness and Resistance</h3>
-      <div class="weakness"></div>
-      <img src="/../assets/img/portfolio/weakness.png" />
-    </div>
-  </div>
+      <div class="chain row">
+        <h3>Evolution Chain</h3>
+        <div class="evolution col" style="text-align: center">
+          <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
+            <img
+              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.babyId}.png`"
+              class="center"
+              v-bind:alt="currentPokemon.name"
+              style="max-width: 250px"
+            />
+          </router-link>
+          <p>{{ baby }}</p>
+        </div>
+        <div class="arrowed">
+          <div class="arrow-6"></div>
+        </div>
+        <div v-if="this.teenId" class="evolution col" style="text-align: center">
+          <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
+            <img
+              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.teenId}.png`"
+              class="center"
+              v-bind:alt="currentPokemon.name"
+              style="max-width: 250px"
+            />
+          </router-link>
+          <p>{{ teen }}</p>
+        </div>
+        <div class="arrowed" v-if="this.adultId">
+          <div class="arrow-6"></div>
+        </div>
+        <div v-if="this.adultId" class="evolution col" style="text-align: center">
+          <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
+            <img
+              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.adultId}.png`"
+              class="center"
+              v-bind:alt="currentPokemon.name"
+              style="max-width: 250px"
+            />
+          </router-link>
+          <p>{{ adult }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="base">
+            <h3>Base Stats</h3>
+          </div>
 
-  <div class="row">
-    <h3>Sprites</h3>
-    <div class="column" style="text-align: center">
-      <!-- front default -->
-      <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentPokemon.id}.png`"
-        class="center"
-        v-bind:alt="currentPokemon.name"
-        style="max-width: 250px"
-      />
-      <p>Front Default</p>
+          <div class="graph">
+            <section class="bar-graph bar-graph-horizontal bar-graph-one">
+              <div class="bar-one">
+                <span class="year">HP</span>
+                <div class="bar" data="60"></div>
+              </div>
+              <div class="bar-two">
+                <span class="year">Attack</span>
+                <div class="bar" data="65"></div>
+              </div>
+              <div class="bar-three">
+                <span class="year">Defense</span>
+                <div class="bar" data="60"></div>
+              </div>
+              <div class="bar-four">
+                <span class="year">Special Attack</span>
+                <div class="bar" data="130"></div>
+              </div>
+              <div class="bar-five">
+                <span class="year">Special Defense</span>
+                <div class="bar" data="75"></div>
+              </div>
+              <div class="bar-six">
+                <span class="year">Speed</span>
+                <div class="bar" data="110"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="col">
+          <div class="base" style="text-align: center">
+            <h3>Moves</h3>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+              <table class="table table-bordered table-striped mb-0">
+                <thead class="color">
+                  <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>PP</th>
+                    <th>Power</th>
+                    <th>Accuracy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ ability[31] }}</td>
+                    <td>Physical</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>100%</td>
+                  </tr>
+                  <tr>
+                    <td>{{ ability[67] }}</td>
+                    <td>Special</td>
+                    <td>15</td>
+                    <td>80</td>
+                    <td>100%</td>
+                  </tr>
+                  <tr>
+                    <td>{{ ability[52] }}</td>
+                    <td>Special</td>
+                    <td>10</td>
+                    <td>75</td>
+                    <td>100%</td>
+                  </tr>
+                  <tr>
+                    <td>{{ ability[83] }}</td>
+                    <td>Physical</td>
+                    <td>20</td>
+                    <td>60</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>{{ ability[34] }}</td>
+                    <td>Special</td>
+                    <td>15</td>
+                    <td>100</td>
+                    <td>100%</td>
+                  </tr>
+                  <tr>
+                    <td>{{ ability[47] }}</td>
+                    <td>Special</td>
+                    <td>10</td>
+                    <td>90</td>
+                    <td>100%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <h3>Weakness and Resistance</h3>
+          <div class="weakness"></div>
+          <img src="/../assets/img/portfolio/weakness.png" />
+        </div>
+      </div>
+
+      <div class="row">
+        <h3>Sprites</h3>
+        <div class="column" style="text-align: center">
+          <!-- front default -->
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentPokemon.id}.png`"
+            class="center"
+            v-bind:alt="currentPokemon.name"
+            style="max-width: 250px"
+          />
+          <p>Front Default</p>
+        </div>
+        <div class="column" style="text-align: center">
+          <!-- front shiny -->
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${currentPokemon.id}.png`"
+            class="center"
+            v-bind:alt="currentPokemon.name"
+            style="max-width: 250px"
+          />
+          <p>Front Shiny</p>
+        </div>
+        <div class="column" style="text-align: center">
+          <!-- back default -->
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${currentPokemon.id}.png`"
+            class="center"
+            v-bind:alt="currentPokemon.name"
+            style="max-width: 250px"
+          />
+          <p>Back Default</p>
+        </div>
+        <div class="column" style="text-align: center">
+          <!-- back shiny -->
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${currentPokemon.id}.png`"
+            class="center"
+            v-bind:alt="currentPokemon.name"
+            style="max-width: 250px"
+          />
+          <p>Back Shiny</p>
+        </div>
+      </div>
+      <div class="router">
+        <router-link to="/pokemon">Back to all Pokemon!</router-link>
+      </div>
     </div>
-    <div class="column" style="text-align: center">
-      <!-- front shiny -->
-      <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${currentPokemon.id}.png`"
-        class="center"
-        v-bind:alt="currentPokemon.name"
-        style="max-width: 250px"
-      />
-      <p>Front Shiny</p>
-    </div>
-    <div class="column" style="text-align: center">
-      <!-- back default -->
-      <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${currentPokemon.id}.png`"
-        class="center"
-        v-bind:alt="currentPokemon.name"
-        style="max-width: 250px"
-      />
-      <p>Back Default</p>
-    </div>
-    <div class="column" style="text-align: center">
-      <!-- back shiny -->
-      <img
-        v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${currentPokemon.id}.png`"
-        class="center"
-        v-bind:alt="currentPokemon.name"
-        style="max-width: 250px"
-      />
-      <p>Back Shiny</p>
-    </div>
-  </div>
-  <div class="router">
-    <router-link to="/pokemon">Back to all Pokemon!</router-link>
   </div>
 </template>
 
@@ -249,6 +262,30 @@ export default {
     this.showPokemon();
     this.showSpecies();
     this.addTeam();
+    // const toggle = document.getElementById("toggle");
+    // const body = document.querySelector("body");
+
+    // toggle.onclick = function () {
+    //   toggle.classList.toggle("active");
+    //   body.classList.toggle("active");
+    // };
+    const options = ["option1"];
+
+    options.forEach((option) => {
+      document.getElementById(option).addEventListener("click", function () {
+        const pokeballs = document.getElementsByClassName("pokeball");
+        for (var i = 0; i < pokeballs.length; i++) {
+          let pokeball = pokeballs[i];
+          if (pokeball.parentNode.id != option) {
+            pokeball.classList.remove("selected");
+            pokeball.parentNode.classList.add("faded");
+          } else {
+            pokeball.classList.add("selected");
+            pokeball.parentNode.classList.remove("faded");
+          }
+        }
+      });
+    });
   },
   methods: {
     showPokemon() {
@@ -293,7 +330,7 @@ export default {
         this.baby = response.data.chain?.species.name;
         this.babyId = response.data.chain?.species.url;
         this.babyId = this.babyId.substring(this.babyId.length - 3, this.babyId.length - 1);
-        this.babyId = this.babyId.replaceAll("/", "");
+        this.babyId = this.babyId.replace("/", "");
         console.log("DEBUG", this.babyId);
         this.teen = response.data.chain?.evolves_to[0]?.species.name;
         this.teenId = response.data.chain?.evolves_to[0]?.species.url;
@@ -340,7 +377,7 @@ p {
 .column {
   /* float: left; */
   width: 25%;
-  padding: 1px;
+  padding: 5px;
 }
 .row::after {
   content: "";
@@ -368,7 +405,7 @@ p {
 }
 h3 {
   text-align: center;
-  text-shadow: 2px 2px #dbc0c0;
+  text-shadow: 2px 2px #bc2626;
 }
 .row {
   text-align: center;
@@ -377,13 +414,14 @@ h3 {
 }
 .graph {
   text-shadow: 1px 1px #140a5a;
+  padding-left: 1cm;
 }
 .chain {
   text-align: center;
 }
 .base {
   text-align: left;
-  padding: 20px 20px;
+  padding: 10px 15px;
 }
 img {
   max-width: 100%;
@@ -437,7 +475,7 @@ body {
   content: attr(data);
   font-weight: 700;
   position: absolute;
-  right: 15px;
+  right: 20px;
   top: 17px;
 }
 
@@ -597,4 +635,72 @@ body {
   top: -13px;
   left: 10px;
 }
+/* *,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#toggle {
+  position: relative;
+  width: 20vmin;
+  height: 10vmin;
+  background: #1e3163;
+  border-radius: 20vmin;
+  cursor: pointer;
+  margin: auto;
+}
+
+#toggle.active {
+  background: #fd6f96;
+}
+
+#toggle .switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10vmin;
+  height: 10vmin;
+  background: #ff0000;
+  border: 0.5vmin solid #000;
+  border-radius: 50%;
+  transform: scale(0.9);
+  transition: 0.8s;
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  bottom: -0.3vmin;
+  left: -0.3vmin;
+  background: #fff;
+  width: 9.6vmin;
+  height: 5vmin;
+  border: 0.5vmin solid #000;
+  border-bottom-left-radius: 30vmin;
+  border-bottom-right-radius: 30vmin;
+  box-shadow: inset 1vmin -1vmin 1vmin #7f7c82;
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 3.4vmin;
+  left: 3.4vmin;
+  width: 2.5vmin;
+  height: 2.5vmin;
+  background: #fff;
+  border: 0.5vmin solid #000;
+  border-radius: 50%;
+  /* box-shadow: -4vmin -4vmin 0 -1vmin rgb(98, 63, 63); */
+/* }
+
+#toggle.active .switch {
+  left: 10vmin;
+  background: #ff0000;
+  transform: scale(0.9) rotate(180deg);
+  transition: 0.8s;
+} */
 </style>
