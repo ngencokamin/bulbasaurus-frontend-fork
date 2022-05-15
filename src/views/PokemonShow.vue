@@ -8,10 +8,7 @@
         style="max-width: 250px"
       />
       <h1>{{ currentPokemon.name }}</h1>
-      <!-- <div id="toggle">
-        <div class="switch"></div>
-      </div> -->
-      <div class="options">
+      <div class="options" v-on:click="addTeam(currentPokemon.id)">
         <div class="option faded" id="option1">
           <div class="pokeball unselected">
             <div class="upper-half"></div>
