@@ -8,7 +8,10 @@
         style="max-width: 250px"
       />
       <h1>{{ currentPokemon.name }}</h1>
+
+      <!-- <button v-on:click="addTeam(currentPokemon.id)">HERE</button> -->
     </div>
+
     <div class="poke-info" style="text-align: center">
       <div class="types">
         <p>{{ attribute[0] }} {{ attribute[1] }}</p>
@@ -37,6 +40,9 @@
       </router-link>
       <p>{{ baby }}</p>
     </div>
+    <div class="arrowed">
+      <div class="arrow-6"></div>
+    </div>
     <div v-if="this.teenId" class="evolution col" style="text-align: center">
       <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
         <img
@@ -47,6 +53,9 @@
         />
       </router-link>
       <p>{{ teen }}</p>
+    </div>
+    <div class="arrowed">
+      <div class="arrow-6"></div>
     </div>
     <div v-if="this.adultId" class="evolution col" style="text-align: center">
       <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
@@ -239,6 +248,7 @@ export default {
   mounted: function () {
     this.showPokemon();
     this.showSpecies();
+    this.addTeam();
   },
   methods: {
     showPokemon() {
@@ -283,14 +293,12 @@ export default {
         this.baby = response.data.chain?.species.name;
         this.babyId = response.data.chain?.species.url;
         this.babyId = this.babyId.substring(this.babyId.length - 3, this.babyId.length - 1);
-        this.babyId = this.babyId.replace("/", "");
+        this.babyId = this.babyId.replaceAll("/", "");
         console.log("DEBUG", this.babyId);
-        console.log("babe", this.teen);
         this.teen = response.data.chain?.evolves_to[0]?.species.name;
         this.teenId = response.data.chain?.evolves_to[0]?.species.url;
         this.teenId = this.teenId.substring(this.teenId.length - 3, this.teenId.length - 1);
         this.teenId = this.teenId.replace("/", "");
-
         console.log("DEBUG2", this.teenId);
         this.adult = response.data.chain?.evolves_to[0]?.evolves_to[0]?.species.name;
         this.adultId = response.data.chain?.evolves_to[0]?.evolves_to[0]?.species.url;
@@ -298,6 +306,11 @@ export default {
         this.adultId = this.adultId.replace("/", "");
 
         console.log("DEBUG3", this.adultId);
+      });
+    },
+    addTeam(id) {
+      axios.post("/team", { user_id: localStorage.user_id, pokemon_id: id }).then((response) => {
+        console.log("GAH", response.data);
       });
     },
   },
@@ -532,12 +545,56 @@ body {
   background-color: black;
   color: white;
 }
-/* .my-custom-scrollbar {
+.arrowed {
   position: relative;
+  display: inline-block;
   height: 200px;
-  overflow: auto;
+  width: 200px;
+  margin: 0 20px 20px 0;
 }
-.table-wrapper-scroll-y {
+
+/* Just centering the examples */
+.arrowed div {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 10px;
+  right: 0;
+  margin: auto;
+}
+.arrow-6 {
+  /* more triangle */
+  height: 20px;
+  width: 20px;
+
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-width: 3px 3px 0 0;
+  transform: rotate(45deg);
+}
+
+.arrow-6:before,
+.arrow-6:after {
+  content: "";
+  position: absolute;
   display: block;
-} */
+  height: 20px;
+  width: 20px;
+  border-width: 3px 3px 0 0;
+}
+
+.arrow-6:before {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-width: 3px 3px 0 0;
+  /* top - distance minus border */
+  top: 7px;
+  left: -10px;
+}
+
+.arrow-6:after {
+  border: 1px solid rgb(0, 0, 0);
+  border-width: 3px 3px 0 0;
+  /* top - distance plus border */
+  top: -13px;
+  left: 10px;
+}
 </style>
