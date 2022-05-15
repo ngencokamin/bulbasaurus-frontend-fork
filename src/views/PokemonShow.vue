@@ -336,7 +336,7 @@ p {
 }
 h3 {
   text-align: center;
-  text-shadow: 2px 2px #ec5e5e;
+  text-shadow: 2px 2px #dbc0c0;
 }
 .row {
   text-align: center;

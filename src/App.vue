@@ -98,6 +98,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-weight: bolder;
 }
 .masthead {
   background: url("https://res.cloudinary.com/dt6bbng8y/image/upload/v1652587826/cute_ubsbkx.jpg");
