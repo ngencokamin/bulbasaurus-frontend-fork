@@ -68,7 +68,7 @@ export default {
     filterPokemon() {
       return this.pokemon.filter((p) => {
         var lowercaseTitle = p.name.toLowerCase();
-        console.log(lowercaseTitle);
+        // console.log(lowercaseTitle);
         var lowercaseSearchText = this.searchText.toLowerCase();
         return lowercaseTitle.includes(lowercaseSearchText);
       });

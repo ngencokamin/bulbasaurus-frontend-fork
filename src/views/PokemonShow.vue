@@ -194,16 +194,6 @@
           <p>Front Default</p>
         </div>
         <div class="column" style="text-align: center">
-          <!-- front shiny -->
-          <img
-            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${currentPokemon.id}.png`"
-            class="center"
-            v-bind:alt="currentPokemon.name"
-            style="max-width: 250px"
-          />
-          <p>Front Shiny</p>
-        </div>
-        <div class="column" style="text-align: center">
           <!-- back default -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${currentPokemon.id}.png`"
@@ -213,6 +203,17 @@
           />
           <p>Back Default</p>
         </div>
+        <div class="column" style="text-align: center">
+          <!-- front shiny -->
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${currentPokemon.id}.png`"
+            class="center"
+            v-bind:alt="currentPokemon.name"
+            style="max-width: 250px"
+          />
+          <p>Front Shiny</p>
+        </div>
+
         <div class="column" style="text-align: center">
           <!-- back shiny -->
           <img
@@ -260,13 +261,7 @@ export default {
     this.showPokemon();
     this.showSpecies();
     this.addTeam();
-    // const toggle = document.getElementById("toggle");
-    // const body = document.querySelector("body");
 
-    // toggle.onclick = function () {
-    //   toggle.classList.toggle("active");
-    //   body.classList.toggle("active");
-    // };
     const options = ["option1"];
 
     options.forEach((option) => {
@@ -429,7 +424,8 @@ img {
   text-align: center;
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto Slab", serif;
+  font-weight: 900;
   padding: 20px;
 }
 

@@ -97,6 +97,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   font-weight: bolder;
+  font-family: "PT Serif", serif;
 }
 .masthead {
   background: url("https://res.cloudinary.com/dt6bbng8y/image/upload/v1652587826/cute_ubsbkx.jpg");
