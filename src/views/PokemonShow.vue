@@ -38,42 +38,33 @@
       <div class="chain row">
         <h3>Evolution Chain</h3>
         <div class="evolution col" style="text-align: center">
-          <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
-            <img
-              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.babyId}.png`"
-              class="center"
-              v-bind:alt="currentPokemon.name"
-              style="max-width: 250px"
-            />
-          </router-link>
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.babyId}.png`"
+            class="center"
+            v-bind:alt="currentPokemon.name"
+          />
           <p>{{ baby }}</p>
         </div>
         <div class="arrowed">
           <div class="arrow-6"></div>
         </div>
         <div v-if="this.teenId" class="evolution col" style="text-align: center">
-          <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
-            <img
-              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.teenId}.png`"
-              class="center"
-              v-bind:alt="currentPokemon.name"
-              style="max-width: 250px"
-            />
-          </router-link>
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.teenId}.png`"
+            class="center"
+            v-bind:alt="currentPokemon.name"
+          />
           <p>{{ teen }}</p>
         </div>
         <div class="arrowed" v-if="this.adultId">
           <div class="arrow-6"></div>
         </div>
         <div v-if="this.adultId" class="evolution col" style="text-align: center">
-          <router-link v-bind:to="`/pokemon/${currentPokemon.id}`">
-            <img
-              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.adultId}.png`"
-              class="center"
-              v-bind:alt="currentPokemon.name"
-              style="max-width: 250px"
-            />
-          </router-link>
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.adultId}.png`"
+            class="center"
+            v-bind:alt="currentPokemon.name"
+          />
           <p>{{ adult }}</p>
         </div>
       </div>
@@ -282,6 +273,7 @@ export default {
   methods: {
     showPokemon() {
       axios.get("https://pokeapi.co/api/v2/pokemon/" + this.$route.params.id).then((response) => {
+        console.log("HEY", this.$route.params.id);
         this.currentPokemon = response.data;
         let attribute = response.data.types;
         attribute.forEach((type) => {
@@ -363,7 +355,6 @@ p {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
 }
 
 .column {
@@ -417,7 +408,6 @@ h3 {
 }
 img {
   max-width: 100%;
-  height: auto;
 }
 .router {
   text-align: center;

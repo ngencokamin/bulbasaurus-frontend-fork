@@ -1,18 +1,38 @@
 <template>
   <div class="team">
-    <div class="chain-row" style="text-align: center">
-      <div class="col" style="width: 18rem" v-for="p in pokemon" v-bind:key="p.id">
+    <!-- <form>
+      <p>
+        Game:
+        <input type="text" />
+      </p>
+    </form> -->
+    <!-- <div class="row">
+      <div class="col" style="text-align: center">
+        <div class="col" style="width: 18rem" v-for="p in pokemon" v-bind:key="p.id">
+          <router-link v-bind:to="`/pokemon/${p.id}`">
+            <img
+              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`"
+              class="card-img-top"
+              v-bind:alt="p.name"
+            />
+          </router-link>
+          <div class="col">
+            <h5 class="col">{{ p.name }}</h5>
+            <p class="col">National № :{{ p.id }}</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="card-group">
+      <div class="card" v-for="p in pokemon" v-bind:key="p.id">
         <img
           v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`"
           class="card-img-top"
           v-bind:alt="p.name"
         />
         <div class="col">
-          <p class="col">
-            {{ p.name }}
-            <br />
-            National № :{{ p.id }}
-          </p>
+          <h5 class="col">{{ p.name }}</h5>
+          <p class="col">National № :{{ p.id }}</p>
         </div>
       </div>
     </div>
@@ -70,5 +90,11 @@ img {
 }
 .body {
   background-color: black;
+}
+.card-deck {
+  width: 30%;
+  padding: 2px;
+  margin: auto;
+  float: left;
 }
 </style>
