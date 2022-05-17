@@ -8,9 +8,9 @@
         style="max-width: 250px"
       />
       <h1>{{ currentPokemon.name }}</h1>
-      <div class="options" v-on:click="addTeam(currentPokemon.id)">
+      <div class="options">
         <div class="option faded" id="option1">
-          <div class="pokeball unselected">
+          <div class="pokeball unselected" v-on:click="addTeam(currentPokemon.id)">
             <div class="upper-half"></div>
             <div class="lower-half"></div>
             <div class="base"></div>
@@ -24,11 +24,11 @@
           <div class="types">
             <p>{{ attribute[0] }} {{ attribute[1] }}</p>
           </div>
-          <p>Pokedex ID: {{ currentPokemon.id }}</p>
+          <p>National № : {{ currentPokemon.id }}</p>
           <p>{{ bio }}</p>
           <p>Category: {{ category }}</p>
-          <p>Height: {{ currentPokemon.height }}</p>
-          <p>Weight: {{ currentPokemon.weight }}</p>
+          <p>Height: {{ currentPokemon.height }}m</p>
+          <p>Weight: {{ currentPokemon.weight }}kg</p>
           <p>Base Happiness: {{ species.base_happiness }}</p>
           <p>Capture Rate: {{ species.capture_rate }}</p>
           <p>Base Experience: {{ currentPokemon.base_experience }}</p>
@@ -260,7 +260,6 @@ export default {
   mounted: function () {
     this.showPokemon();
     this.showSpecies();
-    this.addTeam();
 
     const options = ["option1"];
 
@@ -449,7 +448,7 @@ body {
 
 .bar-graph-horizontal .year {
   float: left;
-  margin-top: 18px;
+  margin-top: 10px;
   width: 60px;
 }
 
@@ -478,6 +477,7 @@ body {
   -webkit-animation: show-bar-one 1.2s 0.1s forwards;
   -moz-animation: show-bar-one 1.2s 0.1s forwards;
   animation: show-bar-one 1.2s 0.1s forwards;
+  padding-left: 5%;
 }
 
 .bar-graph-one .bar-two .bar {
@@ -485,6 +485,7 @@ body {
   -webkit-animation: show-bar-two 1.2s 0.2s forwards;
   -moz-animation: show-bar-two 1.2s 0.2s forwards;
   animation: show-bar-two 1.2s 0.2s forwards;
+  padding-left: 5%;
 }
 
 .bar-graph-one .bar-three .bar {
@@ -492,6 +493,7 @@ body {
   -webkit-animation: show-bar-three 1.2s 0.3s forwards;
   -moz-animation: show-bar-three 1.2s 0.3s forwards;
   animation: show-bar-three 1.2s 0.3s forwards;
+  padding-left: 5%;
 }
 
 .bar-graph-one .bar-four .bar {
@@ -499,18 +501,21 @@ body {
   -webkit-animation: show-bar-four 1.2s 0.4s forwards;
   -moz-animation: show-bar-four 1.2s 0.4s forwards;
   animation: show-bar-four 1.2s 0.4s forwards;
+  padding-left: 5%;
 }
 .bar-graph-one .bar-five .bar {
   background-color: #461fa2;
   -webkit-animation: show-bar-five 1.2s 0.5s forwards;
   -moz-animation: show-bar-five 1.2s 0.5s forwards;
   animation: show-bar-five 1.2s 0.5s forwards;
+  padding-left: 5%;
 }
 .bar-graph-one .bar-six .bar {
   background-color: #2c0a7c;
   -webkit-animation: show-bar-six 1.2s 0.6s forwards;
   -moz-animation: show-bar-six 1.2s 0.6s forwards;
   animation: show-bar-six 1.2s 0.6s forwards;
+  padding-left: 5%;
 }
 /* Bar Graph Horizontal Animations */
 @-webkit-keyframes show-bar-one {
