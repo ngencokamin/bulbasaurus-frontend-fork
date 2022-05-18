@@ -8,33 +8,37 @@
         style="max-width: 250px"
       />
       <h1>{{ currentPokemon.name }}</h1>
-      <div class="options">
-        <div class="option faded" id="option1">
-          <div class="pokeball unselected" v-on:click="addTeam(currentPokemon.id)">
-            <div class="upper-half"></div>
-            <div class="lower-half"></div>
-            <div class="base"></div>
-            <div class="inner-circle"></div>
-            <div class="indicator visible"></div>
-            <div class="indicator-inner"></div>
-          </div>
-        </div>
 
-        <div class="poke-info" style="text-align: center">
-          <div class="types">
-            <p>{{ attribute[0] }} {{ attribute[1] }}</p>
+      <div class="options">
+        <Popper content="Great catch! This Pokemon has been added to your team!">
+          <div class="option faded" id="option1">
+            <div class="pokeball unselected" v-on:click="addTeam(currentPokemon.id)">
+              <div class="upper-half"></div>
+              <div class="lower-half"></div>
+              <div class="base"></div>
+              <div class="inner-circle"></div>
+              <div class="indicator visible"></div>
+              <div class="indicator-inner"></div>
+            </div>
           </div>
-          <p>National № : {{ currentPokemon.id }}</p>
-          <p>{{ bio }}</p>
-          <p>Category: {{ category }}</p>
-          <p>Height: {{ currentPokemon.height }}m</p>
-          <p>Weight: {{ currentPokemon.weight }}kg</p>
-          <p>Base Happiness: {{ species.base_happiness }}</p>
-          <p>Capture Rate: {{ species.capture_rate }}</p>
-          <p>Base Experience: {{ currentPokemon.base_experience }}</p>
-          <p>Abilities: {{ ability[0] }}</p>
-        </div>
+        </Popper>
       </div>
+
+      <div class="poke-info" style="text-align: center">
+        <div class="types">
+          <p>{{ attribute[0] }} {{ attribute[1] }}</p>
+        </div>
+        <p>National № : {{ currentPokemon.id }}</p>
+        <p>{{ bio }}</p>
+        <p>Category: {{ category }}</p>
+        <p>Height: {{ currentPokemon.height }}m</p>
+        <p>Weight: {{ currentPokemon.weight }}kg</p>
+        <p>Base Happiness: {{ species.base_happiness }}</p>
+        <p>Capture Rate: {{ species.capture_rate }}</p>
+        <p>Base Experience: {{ currentPokemon.base_experience }}</p>
+        <p>Abilities: {{ ability[0] }}</p>
+      </div>
+
       <div class="chain row">
         <h3>Evolution Chain</h3>
         <div class="evolution col" style="text-align: center">
@@ -229,8 +233,12 @@
 <script>
 import axios from "axios";
 import "../../public/css/styles.scss";
+import Popper from "vue3-popper";
 
 export default {
+  components: {
+    Popper,
+  },
   data: function () {
     return {
       pokemon: [],
@@ -634,5 +642,15 @@ body {
   /* top - distance plus border */
   top: -13px;
   left: 10px;
+}
+:root {
+  --popper-theme-background-color: #333333;
+  --popper-theme-background-color-hover: #333333;
+  --popper-theme-text-color: #ffffff;
+  --popper-theme-border-width: 0px;
+  --popper-theme-border-style: solid;
+  --popper-theme-border-radius: 6px;
+  --popper-theme-padding: 32px;
+  --popper-theme-box-shadow: 0 6px 30px -6px rgba(0, 0, 0, 0.25);
 }
 </style>

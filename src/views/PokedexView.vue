@@ -96,11 +96,11 @@
       </div>
     </div>
   </div>
-  <div class="mobile">
+  <!-- <div class="mobile">
     <h1>Mobile Stats</h1>
     <h4>Text +1(345-876-4567) your favorite Pokemon and receive their base stats straight to your device!</h4>
     <img src="https://i.pinimg.com/originals/00/ff/ea/00ffea6f4c8f8c6348703c6002ac9042.gif" />
-  </div>
+  </div> -->
 </template>
 
 <script>

@@ -36,6 +36,7 @@ export default {
   created: function () {
     this.addPokemon();
   },
+
   methods: {
     addPokemon() {
       axios.get("/team").then((response) => {
