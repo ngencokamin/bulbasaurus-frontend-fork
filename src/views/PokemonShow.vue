@@ -42,6 +42,7 @@
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.babyId}.png`"
             class="center"
             v-bind:alt="currentPokemon.name"
+            style="max-width: 250px"
           />
           <p>{{ baby }}</p>
         </div>
@@ -53,6 +54,7 @@
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.teenId}.png`"
             class="center"
             v-bind:alt="currentPokemon.name"
+            style="max-width: 250px"
           />
           <p>{{ teen }}</p>
         </div>
@@ -64,6 +66,7 @@
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.adultId}.png`"
             class="center"
             v-bind:alt="currentPokemon.name"
+            style="max-width: 250px"
           />
           <p>{{ adult }}</p>
         </div>
@@ -343,14 +346,20 @@ h1 {
   color: rgb(61, 1, 101);
   text-shadow: 2px 2px #00eeff;
   font-family: "Pokemon Solid";
+  text-align: center;
+}
+h3 {
 }
 h2 {
   color: rgb(0, 0, 0);
 }
 p {
   color: rgb(0, 0, 0);
+  font-weight: bolder;
 }
-
+.options .p {
+  text-align: center;
+}
 .center {
   display: block;
   margin-left: auto;
@@ -389,6 +398,7 @@ p {
 h3 {
   text-align: center;
   text-shadow: 2px 2px #bc2626;
+  font-weight: bolder;
 }
 .row {
   text-align: center;
@@ -439,7 +449,8 @@ body {
 .bar-graph-horizontal .year {
   float: left;
   margin-top: 10px;
-  width: 60px;
+  width: 50px;
+  padding-right: 20%;
 }
 
 .bar-graph-horizontal .bar {

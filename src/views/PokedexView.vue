@@ -755,4 +755,8 @@ body {
   margin-right: auto;
   width: 50%;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 </style>

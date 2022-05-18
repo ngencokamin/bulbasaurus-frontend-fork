@@ -1,38 +1,20 @@
 <template>
   <div class="team">
-    <!-- <form>
-      <p>
-        Game:
-        <input type="text" />
-      </p>
-    </form> -->
-    <!-- <div class="row">
-      <div class="col" style="text-align: center">
-        <div class="col" style="width: 18rem" v-for="p in pokemon" v-bind:key="p.id">
-          <router-link v-bind:to="`/pokemon/${p.id}`">
-            <img
-              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`"
-              class="card-img-top"
-              v-bind:alt="p.name"
-            />
-          </router-link>
-          <div class="col">
-            <h5 class="col">{{ p.name }}</h5>
-            <p class="col">National № :{{ p.id }}</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <div class="card-group">
-      <div class="card" v-for="p in pokemon" v-bind:key="p.id">
-        <img
-          v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`"
-          class="card-img-top"
-          v-bind:alt="p.name"
-        />
+    <h1>My Team</h1>
+    <div class="row">
+      <div class="column" style="width: 18rem" v-for="p in pokemon" v-bind:key="p.id">
+        <router-link v-bind:to="`/pokemon/${p.id}`">
+          <img
+            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`"
+            class="card-img-top"
+            v-bind:alt="p.name"
+          />
+        </router-link>
         <div class="col">
-          <h5 class="col">{{ p.name }}</h5>
+          <h1 class="col">{{ p.name }}</h1>
+          <br />
           <p class="col">National № :{{ p.id }}</p>
+          <button class="pulse" v-on:click="destroyPokemon(p.team_id)">Delete</button>
         </div>
       </div>
     </div>
@@ -48,6 +30,7 @@ export default {
       pokemon: [],
       poke: [],
       attribute: [],
+      game: "",
     };
   },
   created: function () {
@@ -67,16 +50,19 @@ export default {
         // console.log(this.team[i]);
         axios.get("https://pokeapi.co/api/v2/pokemon/" + this.team[i].pokemon_id).then((response) => {
           this.poke = response.data;
+          this.poke.team_id = this.team[i].id;
+          console.log(this.poke);
           this.pokemon.push(this.poke);
-          // let attribute = response.data.types;
-          // attribute.forEach((type) => {
-          //   this.attribute.push(type.type.name);
-          // });
-          // console.log("ABILITY", this.attribute);
-          // console.log(this.poke);
         });
       }
       console.log("BEEP", this.pokemon);
+    },
+    destroyPokemon(pokemon_id) {
+      axios.delete(`/team/${pokemon_id}`).then((response) => {
+        console.log(response);
+        let index = this.pokemon.indexOf(pokemon_id);
+        this.pokemon.splice(index, 1);
+      });
     },
   },
 };
@@ -91,10 +77,20 @@ img {
 .body {
   background-color: black;
 }
-.card-deck {
-  width: 30%;
-  padding: 2px;
+.row {
+  text-align: center;
+  resize: horizontal;
+  overflow: auto;
+}
+
+.column {
   margin: auto;
-  float: left;
+  width: 25%;
+  padding: 5px 10px;
+}
+h5 {
+  font-family: "Pokemon Solid";
+}
+.pulse {
 }
 </style>
