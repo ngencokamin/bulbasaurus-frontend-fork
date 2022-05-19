@@ -47,7 +47,7 @@ export default {
         Password must be longer than 6 characters.
       </small>
       <div>
-        <label>Password confirmation:</label>
+        <label>Confirm Pasword:</label>
         <input type="password" v-model="newUserParams.password_confirmation" />
       </div>
       <small v-if="newUserParams.password !== newUserParams.password_confirmation" class="text-danger">
@@ -57,3 +57,9 @@ export default {
     </form>
   </div>
 </template>
+
+<style>
+.signup {
+  text-align: center;
+}
+</style>
