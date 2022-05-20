@@ -48,3 +48,8 @@ export default {
     </form>
   </div>
 </template>
+<style>
+.login {
+  text-align: center;
+}
+</style>
