@@ -41,7 +41,7 @@
 
       <div class="chain row">
         <h3>Evolution Chain</h3>
-        <div class="evolution col" style="text-align: center">
+        <div class="evolution col-md" style="text-align: center">
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.babyId}.png`"
             class="center"
@@ -53,7 +53,7 @@
         <div class="arrowed">
           <div class="arrow-6"></div>
         </div>
-        <div v-if="this.teenId" class="evolution col" style="text-align: center">
+        <div v-if="this.teenId" class="evolution col-md" style="text-align: center">
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.teenId}.png`"
             class="center"
@@ -65,7 +65,7 @@
         <div class="arrowed" v-if="this.adultId">
           <div class="arrow-6"></div>
         </div>
-        <div v-if="this.adultId" class="evolution col" style="text-align: center">
+        <div v-if="this.adultId" class="evolution col-md" style="text-align: center">
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.adultId}.png`"
             class="center"
