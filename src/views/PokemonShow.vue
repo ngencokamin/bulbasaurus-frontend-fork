@@ -426,6 +426,8 @@ h3 {
 }
 img {
   max-width: 100%;
+  min-width: 300px;
+  height: auto;
 }
 .router {
   text-align: center;
