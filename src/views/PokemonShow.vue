@@ -393,6 +393,11 @@ p {
   padding: 2px;
   margin: auto;
 }
+@media screen and (max-width: 480px) {
+  img {
+    width: 400px;
+  }
+}
 .chain::after {
   content: "";
   clear: both;
