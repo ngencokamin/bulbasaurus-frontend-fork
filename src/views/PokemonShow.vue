@@ -172,11 +172,6 @@
             </div>
           </div>
         </div>
-        <div class="col">
-          <h3>Weakness and Resistance</h3>
-          <div class="weakness"></div>
-          <img src="/../assets/img/portfolio/weakness.png" />
-        </div>
       </div>
 
       <div class="row">
