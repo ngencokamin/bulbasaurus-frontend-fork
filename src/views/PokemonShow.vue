@@ -95,7 +95,7 @@
           </div>
         </div>
         <div class="col">
-          <div class="base" style="text-align: center; background-color: black">
+          <div class="base" style="text-align: center">
             <h3>Moves</h3>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
               <table class="table table-bordered table-striped mb-0">
