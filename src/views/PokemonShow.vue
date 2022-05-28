@@ -38,41 +38,25 @@
         <p>Base Experience: {{ currentPokemon.base_experience }}</p>
         <p>Abilities: {{ ability[0] }}</p>
       </div>
-
+      <h3>Evolution Chain</h3>
       <div class="chain row">
-        <h3>Evolution Chain</h3>
-        <div class="evolution col-md" style="text-align: center">
-          <img
-            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.babyId}.png`"
-            class="center"
-            v-bind:alt="currentPokemon.name"
-            style="max-width: 250px"
-          />
-          <p>{{ baby }}</p>
-        </div>
-        <div class="arrowed">
+        <div
+          class="col-md"
+          v-for="(evolution,index) in evolutionChain"
+          :key="evolution._id"
+        >
+          <div>
+            <img
+              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${evolution.id}.png`"
+              class="center img-responsive"
+              v-bind:alt="evolution.name"
+              style="max-width:250px;height: auto"
+            />
+            <p>{{ evolution.name }}</p>
+          </div>
+          <div class="arrowed" v-if="index < this.evolutionChain.length - 1">
           <div class="arrow-6"></div>
         </div>
-        <div v-if="this.teenId" class="evolution col-md" style="text-align: center">
-          <img
-            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.teenId}.png`"
-            class="center"
-            v-bind:alt="currentPokemon.name"
-            style="max-width: 250px"
-          />
-          <p>{{ teen }}</p>
-        </div>
-        <div class="arrowed" v-if="this.adultId">
-          <div class="arrow-6"></div>
-        </div>
-        <div v-if="this.adultId" class="evolution col-md" style="text-align: center">
-          <img
-            v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.adultId}.png`"
-            class="center"
-            v-bind:alt="currentPokemon.name"
-            style="max-width: 250px"
-          />
-          <p>{{ adult }}</p>
         </div>
       </div>
       <div class="row">
@@ -111,7 +95,7 @@
           </div>
         </div>
         <div class="col">
-          <div class="base" style="text-align: center">
+          <div class="base" style="text-align: center; background-color: black">
             <h3>Moves</h3>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
               <table class="table table-bordered table-striped mb-0">
@@ -176,7 +160,7 @@
 
       <div class="row">
         <h3>Sprites</h3>
-        <div class="column" style="text-align: center">
+        <div class="col-md-3" style="text-align: center">
           <!-- front default -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentPokemon.id}.png`"
@@ -186,7 +170,7 @@
           />
           <p>Front Default</p>
         </div>
-        <div class="column" style="text-align: center">
+        <div class="col-md-3" style="text-align: center">
           <!-- back default -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${currentPokemon.id}.png`"
@@ -196,7 +180,7 @@
           />
           <p>Back Default</p>
         </div>
-        <div class="column" style="text-align: center">
+        <div class="col-md-3" style="text-align: center">
           <!-- front shiny -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${currentPokemon.id}.png`"
@@ -207,7 +191,7 @@
           <p>Front Shiny</p>
         </div>
 
-        <div class="column" style="text-align: center">
+        <div class="col-md-3" style="text-align: center">
           <!-- back shiny -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${currentPokemon.id}.png`"
@@ -236,7 +220,6 @@ export default {
   },
   data: function () {
     return {
-      pokemon: [],
       currentPokemon: {},
       ability: [],
       attribute: [],
@@ -252,6 +235,7 @@ export default {
       babyId: {},
       teenId: {},
       adultId: {},
+      evolutionChain: [],
     };
   },
   mounted: function () {
@@ -278,67 +262,76 @@ export default {
   },
   methods: {
     showPokemon() {
-      axios.get("https://pokeapi.co/api/v2/pokemon/" + this.$route.params.id).then((response) => {
-        console.log("HEY", this.$route.params.id);
-        this.currentPokemon = response.data;
-        let attribute = response.data.types;
-        attribute.forEach((type) => {
-          this.attribute.push(type.type.name);
-        });
-        let stats = response.data.stats;
-        stats.forEach((base_stat) => {
-          this.stats.push(base_stat.base_stat);
-        });
-        let ability = response.data.abilities;
-        ability.forEach((ability) => {
-          this.ability.push(ability.ability.name);
-        });
-        let moves = response.data.moves;
-        moves.forEach((move) => {
-          this.ability.push(move.move.name);
-        });
+      axios
+        .get("https://pokeapi.co/api/v2/pokemon/" + this.$route.params.id)
+        .then((response) => {
+          console.log("HEY", this.$route.params.id);
+          this.currentPokemon = response.data;
+          let attribute = response.data.types;
+          attribute.forEach((type) => {
+            this.attribute.push(type.type.name);
+          });
+          let stats = response.data.stats;
+          stats.forEach((base_stat) => {
+            this.stats.push(base_stat.base_stat);
+          });
+          let ability = response.data.abilities;
+          ability.forEach((ability) => {
+            this.ability.push(ability.ability.name);
+          });
+          let moves = response.data.moves;
+          moves.forEach((move) => {
+            this.ability.push(move.move.name);
+          });
 
-        console.log("ABILITY", this.ability);
-        console.log("STATS", this.stats);
-        console.log("TYPES", this.attribute);
-        console.log("POKEMON", this.currentPokemon);
-      });
+          console.log("ABILITY", this.ability);
+          console.log("STATS", this.stats);
+          console.log("TYPES", this.attribute);
+          console.log("POKEMON", this.currentPokemon);
+        });
     },
     showSpecies() {
-      axios.get("https://pokeapi.co/api/v2/pokemon-species/" + this.$route.params.id).then((response) => {
-        this.species = response.data;
-        console.log("SPECIES", this.species.evolution_chain.url);
-        console.log("CATEGORY", this.species.genera[7]);
-        this.bio = response.data.flavor_text_entries[0].flavor_text;
-        this.category = response.data.genera[7].genus;
-        this.showEvolution(this.species.evolution_chain.url);
-      });
+      axios
+        .get("https://pokeapi.co/api/v2/pokemon-species/" + this.$route.params.id)
+        .then((response) => {
+          this.species = response.data;
+          console.log("SPECIES", this.species.evolution_chain.url);
+          console.log("CATEGORY", this.species.genera[7]);
+          this.bio = response.data.flavor_text_entries[0].flavor_text;
+          this.category = response.data.genera[7].genus;
+          this.showEvolution(this.species.evolution_chain.url);
+        });
     },
     showEvolution(chain) {
       axios.get(chain).then((response) => {
         console.log(response.data);
-        this.baby = response.data.chain?.species.name;
-        this.babyId = response.data.chain?.species.url;
-        this.babyId = this.babyId.substring(this.babyId.length - 3, this.babyId.length - 1);
-        this.babyId = this.babyId.replace("/", "");
-        console.log("DEBUG", this.babyId);
-        this.teen = response.data.chain?.evolves_to[0]?.species.name;
-        this.teenId = response.data.chain?.evolves_to[0]?.species.url;
-        this.teenId = this.teenId.substring(this.teenId.length - 3, this.teenId.length - 1);
-        this.teenId = this.teenId.replace("/", "");
-        console.log("DEBUG2", this.teenId);
-        this.adult = response.data.chain?.evolves_to[0]?.evolves_to[0]?.species.name;
-        this.adultId = response.data.chain?.evolves_to[0]?.evolves_to[0]?.species.url;
-        this.adultId = this.adultId.substring(this.adultId.length - 3, this.adultId.length - 1);
-        this.adultId = this.adultId.replace("/", "");
-
-        console.log("DEBUG3", this.adultId);
+        let currentEvolution = response.data.chain;
+        let url = currentEvolution.species.url.replace(/\/$/, "");
+        this.evolutionChain.push({
+          name: currentEvolution.species.name,
+          id: url.substring(url.lastIndexOf("/") + 1),
+        });
+        let hasEvolution = response.data.chain?.evolves_to.length > 0 ? true : false;
+        while (hasEvolution) {
+          if (currentEvolution.evolves_to.length > 0) {
+            currentEvolution = currentEvolution.evolves_to[0];
+            let url = currentEvolution.species.url.replace(/\/$/, "");
+            this.evolutionChain.push({
+              name: currentEvolution.species.name,
+              id: url.substring(url.lastIndexOf("/") + 1),
+            });
+          } else {
+            hasEvolution = false;
+          }
+        }
       });
     },
     addTeam(id) {
-      axios.post("/team", { user_id: localStorage.user_id, pokemon_id: id }).then((response) => {
-        console.log("GAH", response.data);
-      });
+      axios
+        .post("/team", { user_id: localStorage.user_id, pokemon_id: id })
+        .then((response) => {
+          console.log("GAH", response.data);
+        });
     },
   },
 };
@@ -370,7 +363,6 @@ p {
 }
 
 .column {
-  /* float: left; */
   width: 25%;
   padding: 5px;
 }
@@ -386,12 +378,6 @@ p {
   text-shadow: 2px 2px #8569f5;
   text-transform: uppercase;
   font-weight: bold;
-}
-.evolution {
-  /* float: left; */
-  width: 30%;
-  padding: 2px;
-  margin: auto;
 }
 @media screen and (max-width: 480px) {
   img {
