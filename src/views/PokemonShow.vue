@@ -42,21 +42,23 @@
       <div class="chain row">
         <div
           class="col-md"
-          v-for="(evolution,index) in evolutionChain"
+          v-for="(evolution, index) in evolutionChain"
           :key="evolution._id"
         >
-          <div>
-            <img
-              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${evolution.id}.png`"
-              class="center img-responsive"
-              v-bind:alt="evolution.name"
-              style="max-width:250px;height: auto"
-            />
-            <p>{{ evolution.name }}</p>
+          <div class="row">
+            <div class="col-sm-6">
+              <img
+                v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${evolution.id}.png`"
+                class="center img-responsive"
+                v-bind:alt="evolution.name"
+                style="max-width: 250px; height: auto"
+              />
+              <p>{{ evolution.name }}</p>
+            </div>
+            <div class="arrowed col-sm-6" v-if="index < this.evolutionChain.length - 1">
+              <div class="arrow-6"></div>
+            </div>
           </div>
-          <div class="arrowed" v-if="index < this.evolutionChain.length - 1">
-          <div class="arrow-6"></div>
-        </div>
         </div>
       </div>
       <div class="row">
