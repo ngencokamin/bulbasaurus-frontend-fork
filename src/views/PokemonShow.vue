@@ -162,7 +162,7 @@
 
       <div class="row">
         <h3>Sprites</h3>
-        <div class="col-md-3" style="text-align: center">
+        <div class="col-lg-3" style="text-align: center">
           <!-- front default -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentPokemon.id}.png`"
@@ -172,7 +172,7 @@
           />
           <p>Front Default</p>
         </div>
-        <div class="col-md-3" style="text-align: center">
+        <div class="col-lg-3" style="text-align: center">
           <!-- back default -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${currentPokemon.id}.png`"
@@ -182,7 +182,7 @@
           />
           <p>Back Default</p>
         </div>
-        <div class="col-md-3" style="text-align: center">
+        <div class="col-lg-3" style="text-align: center">
           <!-- front shiny -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${currentPokemon.id}.png`"
@@ -193,7 +193,7 @@
           <p>Front Shiny</p>
         </div>
 
-        <div class="col-md-3" style="text-align: center">
+        <div class="col-lg-3" style="text-align: center">
           <!-- back shiny -->
           <img
             v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${currentPokemon.id}.png`"
