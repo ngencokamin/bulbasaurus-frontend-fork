@@ -346,7 +346,8 @@ h2 {
   color: rgb(0, 0, 0);
 }
 p {
-  color: rgb(0, 0, 0);
+  /* color: rgb(0, 0, 0); */
+  color: #000000;
   font-weight: bolder;
 }
 .options .p {
@@ -380,6 +381,13 @@ p {
     width: 400px;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .arrowed {
+    display: none !important;
+  }
+}
+
 .chain::after {
   content: "";
   clear: both;
@@ -580,7 +588,7 @@ body {
   display: inline-block;
   height: 200px;
   width: 200px;
-  margin: 0 20px 20px 0;
+  margin: auto;
 }
 
 /* Just centering the examples */
