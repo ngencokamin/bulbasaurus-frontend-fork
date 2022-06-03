@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-lg-6">
           <div class="base">
             <h3>Base Stats</h3>
           </div>
@@ -71,32 +71,32 @@
             <section class="bar-graph bar-graph-horizontal bar-graph-one">
               <div class="bar-one">
                 <span class="year">HP</span>
-                <div class="bar" data="60"></div>
+                <div class="bar" :data="this.stats[0]"></div>
               </div>
               <div class="bar-two">
                 <span class="year">Attack</span>
-                <div class="bar" data="65"></div>
+                <div class="bar" :data="this.stats[1]"></div>
               </div>
               <div class="bar-three">
                 <span class="year">Defense</span>
-                <div class="bar" data="60"></div>
+                <div class="bar" :data="this.stats[2]"></div>
               </div>
               <div class="bar-four">
                 <span class="year">Special Attack</span>
-                <div class="bar" data="130"></div>
+                <div class="bar" :data="this.stats[3]"></div>
               </div>
               <div class="bar-five">
                 <span class="year">Special Defense</span>
-                <div class="bar" data="75"></div>
+                <div class="bar" :data="this.stats[4]"></div>
               </div>
               <div class="bar-six">
                 <span class="year">Speed</span>
-                <div class="bar" data="110"></div>
+                <div class="bar" :data="this.stats[5]"></div>
               </div>
             </section>
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg-6">
           <div class="base" style="text-align: center">
             <h3>Moves</h3>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
