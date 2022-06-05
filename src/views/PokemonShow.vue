@@ -25,8 +25,8 @@
       </div>
 
       <div class="poke-info" style="text-align: center">
-        <div class="types">
-          <p>{{ attribute[0] }} {{ attribute[1] }}</p>
+        <div class="types" >
+          <span class="type" v-for="type in types" :key="type.name" :style="{'background-color': type.color}">{{ type.name }}</span> 
         </div>
         <p>National № : {{ currentPokemon.id }}</p>
         <p>{{ bio }}</p>
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-lg-6">
           <div class="base">
             <h3>Base Stats</h3>
           </div>
@@ -71,32 +71,32 @@
             <section class="bar-graph bar-graph-horizontal bar-graph-one">
               <div class="bar-one">
                 <span class="year">HP</span>
-                <div class="bar" data="60"></div>
+                <div class="bar" :data="this.stats[0]"></div>
               </div>
               <div class="bar-two">
                 <span class="year">Attack</span>
-                <div class="bar" data="65"></div>
+                <div class="bar" :data="this.stats[1]"></div>
               </div>
               <div class="bar-three">
                 <span class="year">Defense</span>
-                <div class="bar" data="60"></div>
+                <div class="bar" :data="this.stats[2]"></div>
               </div>
               <div class="bar-four">
                 <span class="year">Special Attack</span>
-                <div class="bar" data="130"></div>
+                <div class="bar" :data="this.stats[3]"></div>
               </div>
               <div class="bar-five">
                 <span class="year">Special Defense</span>
-                <div class="bar" data="75"></div>
+                <div class="bar" :data="this.stats[4]"></div>
               </div>
               <div class="bar-six">
                 <span class="year">Speed</span>
-                <div class="bar" data="110"></div>
+                <div class="bar" :data="this.stats[5]"></div>
               </div>
             </section>
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg-6">
           <div class="base" style="text-align: center">
             <h3>Moves</h3>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -222,16 +222,35 @@ export default {
   },
   data: function () {
     return {
+      typeColors: {
+         "normal": "#A8A77A",
+         "fire": "#EE8130",
+         "water": "#6390F0",
+         "grass": "#7AC74C",
+         "flying": "#A98FF3",
+         "fighting": "#C22E28",
+         "poison": "#A33EA1",
+         "electric": "#F7D02C",
+         "ground": "#E2BF65",
+         "rock": "#B6A136",
+         "psychic": "#F95587",
+         "ice": "#96D9D6",
+         "bug": "#A6B91A",
+         "ghost": "#735797",
+         "steel": "#B7B7CE",
+         "dragon": "#6F35FC",
+         "dark": "#705746",
+         "fairy": "#D685AD"},
       currentPokemon: {},
       ability: [],
-      attribute: [],
+      types: [],
       stats: [],
       base_stat: [],
       species: {},
       bio: [],
       category: {},
       moves: {},
-      evolutionChain: [],
+      evolutionChain: []
     };
   },
   mounted: function () {
@@ -263,9 +282,9 @@ export default {
         .then((response) => {
           console.log("HEY", this.$route.params.id);
           this.currentPokemon = response.data;
-          let attribute = response.data.types;
-          attribute.forEach((type) => {
-            this.attribute.push(type.type.name);
+          let typesArray = response.data.types;
+          typesArray.forEach((type) => {
+            this.types.push({"name": type.type.name, "color": this.typeColors[type.type.name]});
           });
           let stats = response.data.stats;
           stats.forEach((base_stat) => {
@@ -282,7 +301,7 @@ export default {
 
           console.log("ABILITY", this.ability);
           console.log("STATS", this.stats);
-          console.log("TYPES", this.attribute);
+          console.log("TYPES", this.types);
           console.log("POKEMON", this.currentPokemon);
         });
     },
@@ -372,9 +391,9 @@ p {
   text-transform: uppercase;
 }
 .types {
-  text-shadow: 2px 2px #8569f5;
   text-transform: uppercase;
   font-weight: bold;
+  margin-bottom:1%
 }
 @media screen and (max-width: 480px) {
   img {
@@ -635,6 +654,18 @@ body {
   top: -13px;
   left: 10px;
 }
+
+.type {
+  padding:0.5%; 
+  border-radius:5px; 
+  border:solid;
+  border-width:0.5px
+}
+
+.type:not(:first-of-type) {
+  margin-left:0.75%;
+}
+
 :root {
   --popper-theme-background-color: #333333;
   --popper-theme-background-color-hover: #333333;
