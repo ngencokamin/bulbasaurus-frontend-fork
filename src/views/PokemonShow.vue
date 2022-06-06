@@ -39,7 +39,7 @@
         <p>Abilities: {{ ability[0] }}</p>
       </div>
       <h3>Evolution Chain</h3>
-      <div class="chain row">
+      <div class="chain row" id="sprite">
         <div
           class="col-md"
           v-for="(evolution, index) in evolutionChain"
@@ -395,17 +395,7 @@ p {
   font-weight: bold;
   margin-bottom:1%
 }
-@media screen and (max-width: 480px) {
-  img {
-    width: 400px;
-  }
-}
 
-@media screen and (max-width: 575px) {
-  .arrowed {
-    display: none !important;
-  }
-}
 
 .chain::after {
   content: "";
@@ -665,6 +655,26 @@ body {
 .type:not(:first-of-type) {
   margin-left:0.75%;
 }
+
+@media screen and (max-width: 480px) {
+  img {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .arrowed {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 575px) {
+  #sprite {
+    margin-left:10%;
+  }
+}
+
+ 
 
 :root {
   --popper-theme-background-color: #333333;
