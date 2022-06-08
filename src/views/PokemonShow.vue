@@ -25,8 +25,8 @@
       </div>
 
       <div class="poke-info" style="text-align: center">
-        <div class="types">
-          <p>{{ attribute[0] }} {{ attribute[1] }}</p>
+        <div class="types" >
+          <span class="type" v-for="type in types" :key="type.name" :style="{'background-color': type.color}">{{ type.name }}</span> 
         </div>
         <p>National № : {{ currentPokemon.id }}</p>
         <p>{{ bio }}</p>
@@ -39,7 +39,7 @@
         <p>Abilities: {{ ability[0] }}</p>
       </div>
       <h3>Evolution Chain</h3>
-      <div class="chain row">
+      <div class="chain row" id="sprite">
         <div
           class="col-md"
           v-for="(evolution, index) in evolutionChain"
@@ -222,16 +222,35 @@ export default {
   },
   data: function () {
     return {
+      typeColors: {
+         "normal": "#A8A77A",
+         "fire": "#EE8130",
+         "water": "#6390F0",
+         "grass": "#7AC74C",
+         "flying": "#A98FF3",
+         "fighting": "#C22E28",
+         "poison": "#A33EA1",
+         "electric": "#F7D02C",
+         "ground": "#E2BF65",
+         "rock": "#B6A136",
+         "psychic": "#F95587",
+         "ice": "#96D9D6",
+         "bug": "#A6B91A",
+         "ghost": "#735797",
+         "steel": "#B7B7CE",
+         "dragon": "#6F35FC",
+         "dark": "#705746",
+         "fairy": "#D685AD"},
       currentPokemon: {},
       ability: [],
-      attribute: [],
+      types: [],
       stats: [],
       base_stat: [],
       species: {},
       bio: [],
       category: {},
       moves: {},
-      evolutionChain: [],
+      evolutionChain: []
     };
   },
   mounted: function () {
@@ -263,9 +282,9 @@ export default {
         .then((response) => {
           console.log("HEY", this.$route.params.id);
           this.currentPokemon = response.data;
-          let attribute = response.data.types;
-          attribute.forEach((type) => {
-            this.attribute.push(type.type.name);
+          let typesArray = response.data.types;
+          typesArray.forEach((type) => {
+            this.types.push({"name": type.type.name, "color": this.typeColors[type.type.name]});
           });
           let stats = response.data.stats;
           stats.forEach((base_stat) => {
@@ -282,7 +301,7 @@ export default {
 
           console.log("ABILITY", this.ability);
           console.log("STATS", this.stats);
-          console.log("TYPES", this.attribute);
+          console.log("TYPES", this.types);
           console.log("POKEMON", this.currentPokemon);
         });
     },
@@ -372,21 +391,11 @@ p {
   text-transform: uppercase;
 }
 .types {
-  text-shadow: 2px 2px #8569f5;
   text-transform: uppercase;
   font-weight: bold;
-}
-@media screen and (max-width: 480px) {
-  img {
-    width: 400px;
-  }
+  margin-bottom:1%
 }
 
-@media screen and (max-width: 575px) {
-  .arrowed {
-    display: none !important;
-  }
-}
 
 .chain::after {
   content: "";
@@ -635,6 +644,38 @@ body {
   top: -13px;
   left: 10px;
 }
+
+.type {
+  padding:0.5%; 
+  border-radius:5px; 
+  border:solid;
+  border-width:0.5px
+}
+
+.type:not(:first-of-type) {
+  margin-left:0.75%;
+}
+
+@media screen and (max-width: 480px) {
+  img {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .arrowed {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 575px) {
+  #sprite {
+    margin-left:10%;
+  }
+}
+
+ 
+
 :root {
   --popper-theme-background-color: #333333;
   --popper-theme-background-color-hover: #333333;
